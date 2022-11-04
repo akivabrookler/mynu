@@ -1,8 +1,7 @@
 # mynu
 
-this is a test
-can you see this?
+ok can peeps see this?
 
-this is  a pull request
-
-pul2?
+@lavie
+@akiva
+@urja
