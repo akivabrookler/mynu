@@ -17,6 +17,9 @@ export default class Navbar extends Component{
                         <li className='navbar-item'>
                             <Link to="/friends" className='nav-link'>Friends</Link>
                         </li>
+                        <li className='navbar-item'>
+                            <Link to="/createProfile" className='nav-link'>Create Profile</Link>
+                        </li>
                     </ul>
                 </div>
 

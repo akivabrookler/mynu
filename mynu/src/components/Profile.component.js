@@ -1,11 +1,13 @@
-import { Component} from 'react';
+import React, { Component} from 'react';
+import axios from 'axios';
 
 export default class Profile extends Component {
-    render(){
-        return (
-            <div>
-                <p> You are on the Profile component</p> 
-            </div>
-        );
-    }
+
+  render(){
+    return (
+        <div>
+        <p> Profile page still under construction. </p>
+        </div>
+    );
+}
 }
