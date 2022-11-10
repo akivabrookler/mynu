@@ -1,6 +1,6 @@
 import "react";
 import "./search_Bar.css";
-import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/";
 
 const onSearch = (searchVal) => {
     setValue(searchVal);
@@ -10,18 +10,17 @@ const onSearch = (searchVal) => {
 
 const onChange = (event) => {
     setValue(event.target.value);
-
 };
 
 return([
     <><h2>"Search for a meal!"</h2><div className="search-box">
-    <input type="text" value={value} onChange={onChange}></input>
-      <button onClick={() => onSearch(value)}>Search</button>
+    <input type="text" value={value} onChange={onChange}/>
+    <button onClick={() => onSearch(value)}>Search</button>
     </div><div className="autofill"
       {...data
         .filter((item) => {
-          const searchVal = value.toLowerCase();
-          const mealName = item.mealName.toLowerCase();
+          const searchVal = value.toUpperCase();
+          const mealName = item.mealName.toUpperCase();
           return (
             searchVal &&
             mealName.startsWith(searchVal) &&
@@ -31,4 +30,4 @@ return([
         .slice(0, 5)
         .map((item) => (
           <div onClick={() => onSearch(item.mealName)} className="search-row" key={item.mealName}>
-            {item.mealName}</div>))} /></>])
+        {item.mealName}</div>))} /></>])
