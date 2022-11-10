@@ -1,6 +1,7 @@
 import "react";
 import "./search_Bar.css";
 import Autocomplete from "@mui/material/";
+var data = require("./searchBarDummyData.json");
 
 const onSearch = (searchVal) => {
     setValue(searchVal);
@@ -27,7 +28,7 @@ return([
             mealName !== searchVal
           );
         })
-        .slice(0, 5)
+        .slice(0, 7)
         .map((item) => (
           <div onClick={() => onSearch(item.mealName)} className="search-row" key={item.mealName}>
         {item.mealName}</div>))} /></>])
