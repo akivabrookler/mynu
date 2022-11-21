@@ -1,6 +1,5 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
 import { allergens } from '../utils/allergens';
 
 export default class CreateProfile extends Component {
@@ -13,11 +12,11 @@ export default class CreateProfile extends Component {
         this.onChangePreference = this.onChangePreference.bind(this);
 
         this.state = {
-            username: '',
-            email: '',
-            preferences: [],
-            checkboxes: Array(allergens.lenght).fill(false)
-        }
+          username: '',
+          email: '',
+          preferences: [],
+          checkboxes: Array(allergens.length)
+      }
     }
 
     onChangeUsername(e){
@@ -32,9 +31,12 @@ export default class CreateProfile extends Component {
         });
     }
 
-    onChangePreference(e){
-        let joined = this.state.preferences.concat(e.target.value);
-        this.setState({preferences: joined});
+    onChangePreference(e){      
+      let newArray = [...this.state.checkboxes, e.target.value];
+      if (this.state.checkboxes.includes(e.target.value)) {
+        newArray =  newArray.filter(preference => preference != e.target.value);
+      }
+      this.setState({preferences: newArray});
     }
 
     onSubmit(e){
@@ -54,7 +56,7 @@ export default class CreateProfile extends Component {
         this.setState({
             username: '',
             email: '', 
-            checkboxes: Array(allergens.lenght).fill(false),
+            checkboxes: Array(allergens.length).fill(false),
             preferences: []
         })
     }
@@ -105,6 +107,6 @@ export default class CreateProfile extends Component {
           <button type="submit">Create Profile</button>
         </form>
         </div>
-        )
-    }
+        );
+  }
 }
