@@ -31,12 +31,27 @@ export default class CreateProfile extends Component {
         });
     }
 
-    onChangePreference(e){      
-      let newArray = [...this.state.checkboxes, e.target.value];
-      if (this.state.checkboxes.includes(e.target.value)) {
-        newArray =  newArray.filter(preference => preference != e.target.value);
-      }
-      this.setState({preferences: newArray});
+    onChangePreference = (e) => {
+     let resultArray = []
+     if(e.target.checked)
+     {
+        resultArray = this.state.preferences.filter(CheckedId=>
+            CheckedId !== e.target.value
+        )
+        resultArray.push(e.target.value)
+     }
+     else
+     {
+        resultArray = this.state.preferences.filter(CheckedId=>
+            CheckedId !== e.target.value
+        )
+     }
+
+     this.setState({
+        preferences: resultArray
+     })
+
+     console.log(resultArray)
     }
 
     onSubmit(e){
