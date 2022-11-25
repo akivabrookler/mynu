@@ -1,0 +1,33 @@
+import "react";
+import "./search_Bar.css";
+import Autocomplete from "@mui/material/";
+var data = require("./searchBarDummyData.json");
+
+const onSearch = (searchVal) => {
+    setValue(searchVal);
+};
+
+const onChange = (event) => {
+    setValue(event.target.value);
+};
+
+return([
+    <><h2>"Search for a meal!"</h2><div className="search-box">
+    <input type="text" value={value} onChange={onChange}/>
+    <button onClick={() => onSearch(value)}>Search</button>
+    </div><div className="autofill">
+      <Autocomplete 
+      style={{ width: 500 }}
+      freeSolo
+      autoComplete
+      autoHighlight
+      options={myOptions}
+      renderInput={(params) => (
+        <TextField {...params}
+          onChange={getDataFromAPI}
+          variant="outlined"
+          label="Find a menu item!"
+          />
+      )}
+      />
+    </div></>])
