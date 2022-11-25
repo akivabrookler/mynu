@@ -10,15 +10,9 @@ import { Box } from '@mui/system';
 import Paper from '@mui/material/Paper';
 import { positions } from '@mui/system';
 import { styled } from '@mui/material/styles';
+import { ListItem } from '@mui/material';
 
-// const router = require('express').Router();
-// let Menu_Item = require('../models/menu_item.mode   ');
 
-// router.route('/:id').get((req,res) => {
-//     Menu_Item.findById(req.params.id)
-//         .then(menuItem => res.json(menuItem))
-//         .catch(err => res.status(400).json('Error: ' + err));
-// });
 
 
 
@@ -32,18 +26,42 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default class MenuItem extends Component {
 
+    // constructor(props) {
+    //     super(props);
+    //     this.state =
+    //     {
+    //         id: -1
+    //     }
+    // }
+
     constructor(props) {
-        super(props);
-        this.state =
-        {
-            id: -1
-        }
-    }
+        super(props);  
+        this.state = {
+            id: -1,
+            name: '',
+            allergens: '',
+            dining_hall: '',
+            meal: []      
+        };
+      }
 
+      componentDidMount(id) {
+        axios.get('http://localhost:5000/menuItems/' + id)
+          .then(response => {
+            this.setState({
+                id: response.data.id,
+                name: response.data.name,
+                allergens: response.data.allergens,
+                dining_hall: response.data.allergens,
+                meal: response.data.meal
+             })
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      }
+    
 
-    displayItem(props) {
-        var id = props;
-    }
 
 
     render(){
@@ -104,6 +122,14 @@ export default class MenuItem extends Component {
         // </Box>
         // );
         const test = true;
+        // let itemName = this.state.name;
+        let itemName = "test";
+
+        let allergens = ["test1", "test2"];
+        let allergensList = [];
+        allergens.forEach((allergen,index)=>{
+            allergensList.push( <ListItem key={allergen} class = "list-group-allergen">{allergen}</ListItem>)
+        })
         return (
             <>
             {/* <Stack
@@ -131,7 +157,7 @@ export default class MenuItem extends Component {
             >
             <div>
                 <h1>
-                {"Menu Item Name"}
+                {itemName}
                 </h1>
             </div>
             </Stack>
@@ -141,7 +167,7 @@ export default class MenuItem extends Component {
                     mr: 10,
                     p: 5,
                     border: 2,
-                    ml: 10
+                    ml: 10,
                     // borderLeft: 20
                 }}
                 direction='row'
@@ -153,7 +179,8 @@ export default class MenuItem extends Component {
                 sx={{
                     mr: 10,
                     // p: 20,
-                    width: 800,
+                    width: 300,
+                    height: 300,
                     p: 5,
                     border: 2,
                     ml: 10
@@ -161,12 +188,12 @@ export default class MenuItem extends Component {
                 }}
                     direction='column'
                     // spacing={{ xs: 1, sm: 2, md: 4 }}
-                    justifyContent="center"
+                    justifyContent="flex-start"
                     alignItems="center"
                     marginRight='50'
                     spacing={3}
                 >
-                    <Item
+                    {/* <Item
                     sx={{
                             p: 2,
                             border: 2,
@@ -175,8 +202,10 @@ export default class MenuItem extends Component {
                         <body>
                         {"Ingredients"}
                         </body>
-                    </Item>
-
+                    </Item> */}
+                    <h3>
+                        "Allergens"
+                    </h3>
                     <Item
                     sx={{
                             p: 2,
@@ -184,7 +213,7 @@ export default class MenuItem extends Component {
                             borderColor: '1px solid black',                                    
                             }}>
                         <body>
-                        {"Allergens"}
+                        {allergensList}
                         </body>
                     </Item>
                 </Stack>
@@ -194,7 +223,9 @@ export default class MenuItem extends Component {
                     mr: 10,
                     p: 5,
                     border: 2,
-                    ml: 130
+                    ml: 130,
+                    width: 300,
+                    height: 300
                     // borderLeft: 20
                 }}
                     direction='column'
