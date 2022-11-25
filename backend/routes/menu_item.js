@@ -1,9 +1,9 @@
 const router = require('express').Router();
-let Menu_Item = require('../models/menu_item.model');
+let MenuItem = require('../models/menuItem.model');
 
 router.route('/').get((req, res) =>{
-    Menu_Item.find()
-        .then(menu_items => res.json(menu_items))
+    MenuItem.find()
+        .then(menuItems => res.json(menuItems))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

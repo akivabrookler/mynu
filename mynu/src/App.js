@@ -6,12 +6,16 @@ import Navbar from "./components/Navbar.component";
 import MenuList from "./components/MenuList.component";
 import Profile from "./components/Profile.component";
 import Friends from "./components/Friends.component";
+import MenuItem from "./components/MenuItem.component";
 
 
 
 
 function App() {
+
+
   return (
+    
     <Router>
       <Navbar/>
       <br />
@@ -23,6 +27,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/friends" exact element={<Friends/>} />
+      </Routes>
+      <Routes>
+        <Route path="/item" exact element={<MenuItem/>} />
       </Routes>
     </Router>
 

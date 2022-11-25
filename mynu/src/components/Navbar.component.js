@@ -12,6 +12,9 @@ export default class Navbar extends Component{
                             <Link to="/menu" className='nav-link'>Menu Items</Link>
                         </li>
                         <li className='navbar-item'>
+                            <Link to="/item" className='nav-link'>Menu Item</Link>
+                        </li>
+                        <li className='navbar-item'>
                             <Link to="/profile" className='nav-link'>Profile</Link>
                         </li>
                         <li className='navbar-item'>
