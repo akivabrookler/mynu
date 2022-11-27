@@ -7,4 +7,10 @@ router.route('/').get((req, res) =>{
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/:id').get((req,res) => {
+    Menu_Item.findById(req.params.id)
+        .then(menuItem => res.json(menuItem))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 module.exports = router;

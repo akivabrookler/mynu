@@ -5,6 +5,8 @@ import List from '@mui/material/List';
 import { ListItem } from '@mui/material';
 import { ListItemButton } from '@mui/material';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+
 
 
 
@@ -14,6 +16,7 @@ export default class MenuList extends Component {
         super(props);
         // this.state = {items:[]};
         this.state = {
+            ids: new Array(),
             items: new Array(),
             vegetarian: false,
             eggFree: false,
@@ -31,10 +34,12 @@ export default class MenuList extends Component {
     }
     async componentDidMount(){
         let items = [];
+        let ids =[];
         await axios.get('http://localhost:5000/menu_items/')
             .then(response => {
                 for (let i in response.data){
                     items.push(response.data[i].name);
+                    ids.push(response.data[i]._id);
                 }
                 console.log("For loop");
                 console.log(items.length);
@@ -42,11 +47,12 @@ export default class MenuList extends Component {
             .catch((error) => {
             console.log(error);
             });
-        this.setState({items: items});
+        this.setState({items: items, ids:ids});
     }
 
     async handleFilter(){
         let items = [];
+        let ids =[];
         await axios.get('http://localhost:5000/menu_items/')
             .then(response => {
                 for (let i in response.data){
@@ -62,6 +68,8 @@ export default class MenuList extends Component {
                         (!this.state.crustaceanShellfishFree || !response.data[i].allergens.includes("crustacean shellfish")) 
                     )
                         items.push(response.data[i].name);
+                        ids.push(response.data[i]._id);
+
                 }
                 console.log("For loop");
                 console.log(items.length);
@@ -69,15 +77,16 @@ export default class MenuList extends Component {
             .catch((error) => {
             console.log(error);
             });
-        this.setState({items: items});
+        this.setState({items: items, ids:ids});
     }
 
 
     render(){
         let items= this.state.items;
+        let ids = this.state.ids;
         let itemList=[];
         items.forEach((item,index)=>{
-          itemList.push( <ListItemButton key={index} class = "list-group-item">{item}</ListItemButton>)
+          itemList.push( <ListItemButton key={index} class = "list-group-item" onClick ={()=>{console.log("Clicked")}} component={Link} to = {"/menu/" + ids[index]}>{item}</ListItemButton>)
         })
 
 
