@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar.component";
 import MenuList from "./components/MenuList.component";
 import Profile from "./components/Profile.component";
 import Friends from "./components/Friends.component";
+import MenuItem from "./components/MenuItem.component.js";
 
 
 
@@ -23,6 +24,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/friends" exact element={<Friends/>} />
+      </Routes>
+      <Routes>
+        <Route path="/menu/:itemId" element={<MenuItem />} />
       </Routes>
     </Router>
 
