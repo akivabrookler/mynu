@@ -1,14 +1,8 @@
 import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import {FormControlLabel, TextField, ListItem, ListItemButton, List} from '@mui/material';
 import { Component} from 'react';
-import List from '@mui/material/List';
-import { ListItem } from '@mui/material';
-import { ListItemButton } from '@mui/material';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
-
-
 
 
 export default class MenuList extends Component {
@@ -28,10 +22,12 @@ export default class MenuList extends Component {
             fishFree: false,
             pescatarian: false,
             soyFree: false,
-            crustaceanShellfishFree: false
+            crustaceanShellfishFree: false,
+            search: "",
         };
 
     }
+
     async componentDidMount(){
         let items = [];
         let ids =[];
@@ -56,7 +52,8 @@ export default class MenuList extends Component {
         await axios.get('http://localhost:5000/menu_items/')
             .then(response => {
                 for (let i in response.data){
-                    if( (!this.state.vegetarian || response.data[i].allergens.includes("vegan") || response.data[i].allergens.includes("vegetarian")) &&
+                    if( (!this.state.search || (response.data[i].name).toLowerCase().includes((this.state.search))) &&
+                        (!this.state.vegetarian || response.data[i].allergens.includes("vegan") || response.data[i].allergens.includes("vegetarian")) &&
                         (!this.state.eggFree || !response.data[i].allergens.includes("eggs")) &&
                         (!this.state.vegan || response.data[i].allergens.includes("vegan")) &&
                         (!this.state.glutenFree || !response.data[i].allergens.includes("gluten")) &&
@@ -100,6 +97,7 @@ export default class MenuList extends Component {
                         </List>
                     </div>
                     <div class="col-sm-2">
+                        <FormControlLabel control={<TextField label="Search Menu" />} onChange= {event => this.setState({search: (event.target.value).toLowerCase()}, this.handleFilter)}/>
                         <div class="bg-light">
                         <p>Dietary Restrictions</p>
                         <List>
