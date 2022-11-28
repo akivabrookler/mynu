@@ -14,7 +14,7 @@ router.route('/add').post((req, res) => {
     const newLogin = new Login({name, email});
 
     newLogin.save()
-        .then(() => res.json('User authorized!'))
+        .then(() => res.json(newLogin._id))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
