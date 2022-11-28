@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 export default class Navbar extends Component{
@@ -19,6 +19,9 @@ export default class Navbar extends Component{
                         </li>
                         <li className='navbar-item'>
                             <Link to="/createProfile" className='nav-link'>Create Profile</Link>
+                        </li>
+                        <li className='navbar-item'>
+                            <Link to="/login" className='nav-link'>Login</Link>
                         </li>
                     </ul>
                 </div>

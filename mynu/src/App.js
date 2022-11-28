@@ -1,4 +1,4 @@
-//import React from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,6 +8,7 @@ import Profile from "./components/Profile.component";
 import Friends from "./components/Friends.component";
 import CreateProfile from "./components/CreateProfile.component"
 
+import Login from "./components/Login.component";
 
 
 
@@ -28,25 +29,13 @@ function App() {
       <Routes>
         <Route path="/createProfile" exact element={<CreateProfile/>} />
       </Routes>
+      <Routes>
+        <Route path="/login" exact element={<Login/>} />
+      </Routes>
     </Router>
 
   );
 }
 
-/*
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-<p>Hello</p>
-    </div>
-  );
-}
-<br />
-      <Route path="/" exact component={MenuList} />
-      <Route path="/add" exact component={AddMenuItem} /> 
-      */
 
 export default App;
