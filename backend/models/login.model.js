@@ -4,21 +4,17 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
-        required: true, 
+        required: false, 
         max: 32
     },
     email: {
         type: String, 
         trim: true, 
-        required: true, 
+        required: false, 
         unique: true, 
         lowercase: true
-    }, 
-    img: {
-        data: Buffer,
-        contentType: String
     }
-}, {timestamps: true})
+})
 
 const Login_user = mongoose.model('User', userSchema)
 module.exports = Login_user;

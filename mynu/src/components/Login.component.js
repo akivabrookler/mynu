@@ -1,4 +1,4 @@
-import { Component} from 'react';
+import React, { Component} from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { googleLogout } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
@@ -25,12 +25,13 @@ export default class Login extends Component{
         
         const user = {
             name: decoded.name,
-            email: decoded.email, 
-            img: decoded.img
+            email: decoded.email
         }
 
-        axios.post('http://localhost:5000/login/add', user).then(res => console.log(res.data));
-
+        console.log(user)
+        const res = await axios.post('http://localhost:5000/login/add', user)
+        console.log(res.data)
+        console.log("axios call done")
     };
 
     handleFailure = (response) => {
