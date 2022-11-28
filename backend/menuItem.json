@@ -2,398 +2,398 @@
     {
         "name": "Oatmeal",
         "allergens": ["vegan", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Oatmeal",
         "allergens": ["vegan", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Bruin Scramble w/ Grilled Chicken",
         "allergens": ["peanuts", "tree nuts", "wheat", "gluten", "soy", "dairy", "eggs", "crustacean shellfish", "fish"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Bruin Scramble (Vegetarian)",
         "allergens": ["vegetarian", "dairy", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Egg, Mushroom & Kale on W.W. English Muffin",
         "allergens": ["vegetarian", "wheat", "gluten", "dairy", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Scrambled Egg Whites",
         "allergens": ["vegetarian", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Scrambled Eggs",
         "allergens": ["vegetarian", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Vegan Omelet",
         "allergens": ["vegan", "soy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Roasted Red Breakfast Potato Wedges",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"],
         "__comment__": "took out the 'w/'"
     },
     {
         "name": "Oat & Whole Wheat Waffle",
         "allergens": ["vegetarian", "wheat", "gluten", "dairy", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Waffle",
         "allergens": ["vegetarian", "wheat", "gluten", "soy", "dairy", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Maple Syrup",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"],
         "__comment__": "took out the 'w/'"
     },
     {
         "name": "Pear-Pineapple Compote",
         "allergens": ["vegetarian"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"],
         "__comment__": "took out the '&'"
     },
     {
         "name": "Roasted Beet and Grilled Pineapple Butter",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"],
         "__comment__": "took out the '&'"
     },
     {
         "name": "Ginger Pancake w/ Banana Walnut Topping",
         "allergens": ["vegan", "tree nuts", "wheat", "gluten", "dairy", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast"]
     },
     {
         "name": "Beef & Barley",
         "allergens": ["gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch", "dinner"]
     },
     {
         "name": "Corn & Leek Soup",
         "allergens": ["vegan", "wheat", "gluten" ],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch", "dinner"]
     },
     {
         "name": "Pork w/ Buckwheat Noodle in Roasted Vegetable Broth",
         "allergens": ["wheat", "gluten", "soy", "eggs" ],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Sesame Tofu, Volcano Rice & Mixed Cabbage Bowl",
         "allergens": ["vegan", "wheat", "gluten", "soy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Salmon, Dill Goat Cheese, & Cucumber Stacker",
         "allergens": ["wheat", "gluten", "dairy", "fish"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Chipotle Seitan Taco",
         "allergens": ["wheat", "gluten", "dairy", "fish"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Mixed Grains -- Lentil, Chickpea, Quinoa & Brown Rice",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Seafood Fra Diavolo with Whole Wheat Pasta",
         "allergens": ["Peanuts", "tree nuts", "wheat", "gluten", "soy", "dairy", "eggs", "crustacean shellfish", "fish"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Garlic Bok Choy",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Garlicky Green Beans",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Broccolini, Swiss Chard, Mozzarella Pizza",
         "allergens": ["vegan", "wheat", "gluten", "dairy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Chicken, Arugula, & Radish Flatbread",
         "allergens": ["wheat", "gluten", "dairy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Farro-Mushroom Stacker",
         "allergens": ["vegetarian", "wheat", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Potato & Red Pepper Hash",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Grilled Chicken - Moroccan Marinade",
         "allergens": [],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch"]
     },
     {
         "name": "Indian Marinated Pork, Lentil, Quinoa, & Spinach Bowl",
         "allergens": ["dairy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Lemon Dill Tofu, Bulgur Wheat, & Cucumber Salad Bowl",
         "allergens": ["vegan", "wheat", "gluten", "soy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Red Chile Chicken Wings w/ Mashed Potatoes w/ Kale & Yogurt Ranch Dressing",
         "allergens": ["vegan", "dairy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Flageolet Bean Ragout w/ Quinoa, Green Beans, & Mushroom",
         "allergens": ["vegan", "wheat", "gluten", "soy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Brown Calrose Rice",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["lunch", "dinner"]
     },
     {
         "name": "Mixed Grains -- Spelt, Wheatberry & Brown Rice",
         "allergens": ["vegan", "wheat", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Roasted Butternut Squash & Celery Root",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Sauteed Spinach",
         "allergens": ["vegan", "wheat", "gluten", "soy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"],
         "__comment__": "accented e might be an issue"
     },
     {
         "name": "Sauteed Spinach",
         "allergens": ["vegan", "wheat", "gluten", "soy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"],
         "__comment__": "accented e might be an issue"
     },
     {
         "name": "Grilled Barramundi w/ Cabbage",
         "allergens": ["soy", "fish"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Grilled Balsamic Eggplant",
         "allergens": ["vegan", "wheat", "gluten", "soy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Roasted Plantains",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["dinner"]
     },
     {
         "name": "Cantaloupe",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Green Grapes",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Kiwi",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Orange",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Pineapple",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Red Grapes",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
 
     {
         "name": "Coconut Pineapple Bread",
         "allergens": ["vegetarian", "tree nuts", "wheat", "gluten", "soy", "dairy", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Multi-Grain Bread",
         "allergens": ["wheat", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Raisin Walnut Bread",
         "allergens": ["vegan", "tree nuts", "wheat", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Spiced Gingerbread",
         "allergens": ["vegatarian", "wheat", "gluten", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Whole Wheat Bread",
         "allergens": ["vegan", "wheat", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Almond Cashew Butter",
         "allergens": ["vegan", "tree nuts"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Cacao Butter",
         "allergens": ["vegan", "peanuts", "tree nuts", "wheat", "gluten", "soy", "dairy", "eggs"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Chocolate Peanut Butter",
         "allergens": ["vegetarian", "peanuts", "tree nuts", "wheat", "gluten", "soy", "dairy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Pear Butter",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Roasted Beet & Grilled Pineapple Butter",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Blueberries",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Cottage Cheese",
         "allergens": ["vegatarian"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Granola",
         "allergens": ["vegetarian", "tree nuts", "wheat", "gluten"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Lowfat Greek Yogurt",
         "allergens": ["vegetarian", "dairy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Lowfar Peach Yogurt",
         "allergens": ["vegatarian", "soy", "dairy"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Mango",
         "allergens": ["vegan"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     },
     {
         "name": "Vegan Coconut Yogurt",
         "allergens": ["vegetarian", "tree nuts"],
-        "dining hall": "BPlate",
+        "dining_hall": "BPlate",
         "meal": ["breakfast", "lunch", "dinner"]
     }
     
