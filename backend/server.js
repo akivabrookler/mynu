@@ -18,7 +18,9 @@ connection.once('open', () => {
 })
 
 const menu_itemsRouter = require('./routes/menu_items.js');
+const loginRouter = require('./routes/login.js');
 app.use('/menu_items', menu_itemsRouter);
+app.use('/login', loginRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`)

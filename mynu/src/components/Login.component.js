@@ -2,50 +2,52 @@ import { Component} from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { googleLogout } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
-import { useState } from 'react';
 
-export default function Login() {
-    const [loginData, setLoginData] = useState(
-        localStorage.getItem('loginData')
-        ? JSON.parse(localStorage.getItem('loginData'))
-        : null
-    )
+import axios from 'axios'
+
+export default class Login extends Component{
+    constructor(props) {
+        super(props); 
+
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
+        this.handleFailure = this.handleFailure.bind(this);
+    }
     
-    const handleLogout = () => {
-        localStorage.removeItem('loginData')
-        setLoginData(null)
+    handleLogout = () => {
         googleLogout();
     }
 
-    const handleLogin = async (response) => {
+    handleLogin = async (response) => {
         console.log(response.credential);
         var decoded = jwt_decode(response.credential);
         console.log(decoded);
+        
+        const user = {
+            name: decoded.name,
+            email: decoded.email, 
+            img: decoded.img
+        }
+
+        axios.post('http://localhost:5000/login/add', user).then(res => console.log(res.data));
 
     };
 
-    const handleFailure = (response) => {
+    handleFailure = (response) => {
         alert("Login Failed :(");
         console.log(response);
     }
     
-    return (
-        <div>
-            {
-                loginData ? (
-                    <div>
-                        <h3>You logged in as {loginData.email}</h3>
-                        <button onClick={handleLogout}>Logout</button>
-                    </div>
-                ) : (
-                    <GoogleLogin
-                    onSuccess={handleLogin}
-                    onError={handleFailure}
-                    />
-                )
-            }
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                <GoogleLogin
+                onSuccess={this.handleLogin}
+                onError={this.handleFailure}
+                />
+            </div>
+        )
+    }
 }
 
 
