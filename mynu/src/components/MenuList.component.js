@@ -63,9 +63,10 @@ export default class MenuList extends Component {
                         //NEED TO ADD MEAT AS ALERGEN FOR PESCETARIAN
                         (!this.state.soyFree || !response.data[i].allergens.includes("soy")) &&
                         (!this.state.crustaceanShellfishFree || !response.data[i].allergens.includes("crustacean shellfish")) 
-                    )
+                    ){
                         items.push(response.data[i].name);
                         ids.push(response.data[i]._id);
+                    }
 
                 }
                 console.log("For loop");
