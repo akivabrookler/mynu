@@ -1,10 +1,7 @@
 import { Component} from 'react';
 import axios from 'axios';
 import {ListItem, List, IconButton, ButtonGroup } from '@mui/material';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-
-
+import {ThumbUp, ThumbDown} from '@mui/icons-material';
 
 export default class MenuItem extends Component {
 
@@ -158,8 +155,8 @@ export default class MenuItem extends Component {
                     </List>
                 </div>
                 <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                    <IconButton onClick={()=>{this.handleLike()}} color ={clickedLikeColoring}> {this.state.likes}<ThumbUpIcon/> </IconButton>
-                    <IconButton onClick={()=>{this.handleDislike()}} color ={clickedDislikeColoring}> {this.state.dislikes}<ThumbDownIcon/> </IconButton>
+                    <IconButton onClick={()=>{this.handleLike()}} color ={clickedLikeColoring}> {this.state.likes}<ThumbUp/> </IconButton>
+                    <IconButton onClick={()=>{this.handleDislike()}} color ={clickedDislikeColoring}> {this.state.dislikes}<ThumbDown/> </IconButton>
                 </ButtonGroup>
 
 
