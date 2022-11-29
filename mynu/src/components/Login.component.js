@@ -1,17 +1,13 @@
 import React, { Component} from 'react';
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
-import { googleLogout } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import axios from 'axios'
-import { Navigate } from 'react-router-dom';
+import Logout_Navbar from "./Logout_Navbar.component";
+import Navbar from "./Navbar.component";
 
 export default function Login() {
     const navigate = useNavigate();
-
-    const handleLogout = () => {
-        googleLogout();
-    }
 
     const handleLogin = async (response) => {
         var decoded = jwt_decode(response.credential);
@@ -28,12 +24,15 @@ export default function Login() {
         if (res.data.slice(0,13) === "Existing User") {
             sessionStorage.setItem("currentUID", res.data.slice(15))
             navigate('/profile')
+            return (<Navbar />).forceUpdateHandler
         }
         else {
             sessionStorage.setItem("currentUID", res.data)
             navigate('/profile')
+            return (<Navbar />).forceUpdateHandler
         }
         console.log(sessionStorage.getItem("currentUID"))
+        
     };
 
     const handleFailure = (response) => {
@@ -43,10 +42,10 @@ export default function Login() {
     
     return (
         <div>
-           <GoogleLogin
+            <GoogleLogin
                 onSuccess={handleLogin}
                 onError={handleFailure}
-                />
+            />
         </div>
     )
 }
