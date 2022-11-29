@@ -26,15 +26,9 @@ export default class Navbar extends Component{
                             <Link to="/profile" className='nav-link'>Profile</Link>
                         </li>
                         <li className='navbar-item'>
-<<<<<<< HEAD
-=======
-                            <Link to="/friends" className='nav-link'>Friends</Link>
-                        </li>
-                        <li className='navbar-item'>
                             <Link to="/createProfile" className='nav-link'>Create Profile</Link>
                         </li>
                         {/* <li className='navbar-item'>
->>>>>>> 6f7ac26 (Add Logout functionality (primitive))
                             <Link to="/login" className='nav-link'>Login</Link>
                         </li> */}
                         {

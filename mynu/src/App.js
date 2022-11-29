@@ -6,12 +6,6 @@ import Navbar from "./components/Navbar.component";
 import Logout_Navbar from "./components/Logout_Navbar.component";
 import MenuList from "./components/MenuList.component";
 import Profile from "./components/Profile.component";
-<<<<<<< HEAD
-
-=======
-import Friends from "./components/Friends.component";
-import CreateProfile from "./components/CreateProfile.component"
->>>>>>> 6f7ac26 (Add Logout functionality (primitive))
 import Login from "./components/Login.component";
 
 
