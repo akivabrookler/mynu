@@ -18,19 +18,20 @@ export default function Login() {
         console.log(decoded);
 
 
-        const user = {
-            name: decoded.name,
+        const profile = {
+            username: decoded.name,
             email: decoded.email
         }
 
-        const res = await axios.post('http://localhost:5000/login/add', user)
+        const res = await axios.post('http://localhost:5000/login/add', profile)
         
         if (res.data.slice(0,13) === "Existing User") {
-            navigate('/profile')
             sessionStorage.setItem("currentUID", res.data.slice(15))
+            navigate('/profile')
         }
         else {
             sessionStorage.setItem("currentUID", res.data)
+            navigate('/profile')
         }
         console.log(sessionStorage.getItem("currentUID"))
     };

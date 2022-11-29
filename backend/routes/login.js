@@ -1,30 +1,29 @@
 
 const router = require('express').Router();
-let Login = require('../models/login.model');
+let Profile = require('../models/profile.model');
 
 router.route('/').get((req, res) =>{
-    Login.find()
-        .then(users => res.json(users))
+    Profile.find()
+        .then(profiles => res.json(profiles))
         .catch(err => res.status(400).json('Error: ' + err));   
 });
 
 router.route('/add').post((req, res) => {
-    const name = req.body.name;
+    const username = req.body.username;
     const email = req.body.email;
     
-    Login.findOne({ email: email }, function(err, user) {
+    Profile.findOne({ email: email }, function(err, profile) {
         if(err) {
            res.status(400).json('Error: ' + err)
         }
-        
-        //if a user was found, that means the user's email matches the entered email
-        if (user) {
-            res.json("Existing User: " + user._id)   
-        } else {
-            const newLogin = new Login({name, email});
 
-            newLogin.save()
-                .then(() => res.json(newLogin._id))
+        if (profile) {
+            res.json("Existing User: " + profile._id)   
+        } else {
+            const newProfile = new Profile({username, email});
+
+            newProfile.save()
+                .then(() => res.json(newProfile._id))
                 .catch(err => res.status(400).json('Error: ' + err));
         }
      }); 
@@ -32,7 +31,7 @@ router.route('/add').post((req, res) => {
 
 
 router.route('/:id').get((req,res) => {
-    Login.findById(req.params.id)
+    Profile.findById(req.params.id)
         .then(user => res.json(user))
         .catch(err => res.status(400).json('Error: ' + err));
 });
