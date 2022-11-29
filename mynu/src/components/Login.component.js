@@ -1,13 +1,14 @@
 import React, { Component} from 'react';
-import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
 import { googleLogout } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
-
 import axios from 'axios'
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
-    
+    const navigate = useNavigate();
+
     const handleLogout = () => {
         googleLogout();
     }
@@ -22,13 +23,15 @@ export default function Login() {
             email: decoded.email
         }
 
-        console.log(user._id)
         const res = await axios.post('http://localhost:5000/login/add', user)
         
-        sessionStorage.setItem("currentUID", res.data)
-
-
-        console.log(sessionStorage.getItem("currentUID"));
+        if (res.data === "Existing User") {
+            console.log("YUP")
+            navigate('/profile')
+        }
+        else {
+            sessionStorage.setItem("currentUID", res.data)
+        }
     };
 
     const handleFailure = (response) => {
