@@ -25,13 +25,14 @@ export default function Login() {
 
         const res = await axios.post('http://localhost:5000/login/add', user)
         
-        if (res.data === "Existing User") {
-            console.log("YUP")
+        if (res.data.slice(0,13) === "Existing User") {
             navigate('/profile')
+            sessionStorage.setItem("currentUID", res.data.slice(15))
         }
         else {
             sessionStorage.setItem("currentUID", res.data)
         }
+        console.log(sessionStorage.getItem("currentUID"))
     };
 
     const handleFailure = (response) => {

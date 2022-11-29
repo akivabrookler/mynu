@@ -19,7 +19,7 @@ router.route('/add').post((req, res) => {
         
         //if a user was found, that means the user's email matches the entered email
         if (user) {
-            res.json("Existing User")   
+            res.json("Existing User: " + user._id)   
         } else {
             const newLogin = new Login({name, email});
 
