@@ -29,7 +29,7 @@ export default class MenuItem extends Component {
     async componentDidMount() {
         console.log("Called mount")
         let id =(window.location.pathname).replace("/menu/","");
-        await axios.get('http://localhost:5000/menu_items/' + id)
+        await axios.get('http://localhost:5002/menu_items/' + id)
             .then(response => {
             this.setState({
                 id: response.data._id,
@@ -55,7 +55,7 @@ export default class MenuItem extends Component {
         console.log(this.state)
         let id =(window.location.pathname).replace("/menu/","");
         if (this.state.liked){
-             await axios.post('http://localhost:5000/menu_items/likedec/' + id, {})
+             await axios.post('http://localhost:5002/menu_items/likedec/' + id, {})
               .then(function (response) {
                 console.log(response);
                 liked = false;
@@ -65,7 +65,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
         }else{
-            await axios.post('http://localhost:5000/menu_items/likeinc/' + id, {})
+            await axios.post('http://localhost:5002/menu_items/likeinc/' + id, {})
               .then(function (response) {
                 console.log(response);
                 liked = true;
@@ -76,7 +76,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
               if (this.state.disliked){
-                await axios.post('http://localhost:5000/menu_items/dislikedec/' + id, {})
+                await axios.post('http://localhost:5002/menu_items/dislikedec/' + id, {})
                 .then(function (response) {
                     console.log(response);
                     disliked = false;
@@ -99,7 +99,7 @@ export default class MenuItem extends Component {
         console.log(this.state)
         let id =(window.location.pathname).replace("/menu/","");
         if (this.state.disliked){
-             await axios.post('http://localhost:5000/menu_items/dislikedec/' + id, {})
+             await axios.post('http://localhost:5002/menu_items/dislikedec/' + id, {})
               .then(function (response) {
                 console.log(response);
                 disliked = false;
@@ -109,7 +109,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
         }else{
-            await axios.post('http://localhost:5000/menu_items/dislikeinc/' + id, {})
+            await axios.post('http://localhost:5002/menu_items/dislikeinc/' + id, {})
               .then(function (response) {
                 console.log(response);
                 disliked = true;
@@ -120,7 +120,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
               if (this.state.liked){
-                await axios.post('http://localhost:5000/menu_items/likedec/' + id, {})
+                await axios.post('http://localhost:5002/menu_items/likedec/' + id, {})
                 .then(function (response) {
                     console.log(response);
                     liked = false;
@@ -149,9 +149,10 @@ export default class MenuItem extends Component {
 
         return (
             <div>
-                <h1 class="text-center font-italic font-weight-light">{this.state.name}</h1>
+                <h1 class="text-center font-italic font-weight-light"><u>{this.state.name}</u></h1>
                 <div class="d-flex align-items-left flex-column">
                     <h1>Dining Hall: {this.state.dining_hall}</h1>
+                    <h1>Meal times: {this.state.meal}</h1>
                     <h1>Allergens</h1>
                     <List >
                         {allergenList}
