@@ -5,8 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar.component";
 import MenuList from "./components/MenuList.component";
 import Profile from "./components/Profile.component";
-import Friends from "./components/Friends.component";
-import CreateProfile from "./components/CreateProfile.component"
 
 import Login from "./components/Login.component";
 
@@ -22,12 +20,6 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/profile" exact element={<Profile/>} />
-      </Routes>
-      <Routes>
-        <Route path="/friends" exact element={<Friends/>} />
-      </Routes>
-      <Routes>
-        <Route path="/createProfile" exact element={<CreateProfile/>} />
       </Routes>
       <Routes>
         <Route path="/login" exact element={<Login/>} />
