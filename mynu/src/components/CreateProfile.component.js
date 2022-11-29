@@ -7,7 +7,6 @@ export default class CreateProfile extends Component {
         super(props);
         
         this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangePreference = this.onChangePreference.bind(this);
 
@@ -19,15 +18,21 @@ export default class CreateProfile extends Component {
       }
     }
 
+    componentDidMount() {
+      let uid = sessionStorage.getItem('currentUID');
+
+      axios.get('http://localhost:5000/login/' + uid)
+        .then(response => {
+          this.setState({
+            username: response.data.name,
+            email: response.data.email
+          })
+        })
+    }
+
     onChangeUsername(e){
         this.setState({
             username: e.target.value
-        });
-    }
-
-    onChangeEmail(e){
-        this.setState({
-            email: e.target.value
         });
     }
 
@@ -89,14 +94,6 @@ export default class CreateProfile extends Component {
               type="text"
               value={this.state.username}
               onChange={this.onChangeUsername}
-            />
-          </label>
-          <label>
-            Email
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.onChangeEmail}
             />
           </label>
           <label>
