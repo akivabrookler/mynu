@@ -120,7 +120,7 @@ export default class MenuList extends Component {
     async handleFilter(){
         let items = [];
         let ids =[];
-        await axios.get(config + 'menu_items/')
+        await axios.get(config.api_url + 'menu_items/')
             .then(response => {
                 for (let i in response.data){
                     if( (!this.state.search || (response.data[i].name).toLowerCase().includes((this.state.search))) &&
