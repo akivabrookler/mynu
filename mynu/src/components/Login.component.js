@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
@@ -21,9 +21,9 @@ export default function Login() {
             email: decoded.email
         }
 
-        const res = await axios.post(config.api_url +'login/add', profile)
-        
-        if (res.data.slice(0,13) === "Existing User") {
+        const res = await axios.post(config.api_url + 'login/add', profile)
+
+        if (res.data.slice(0, 13) === "Existing User") {
             sessionStorage.setItem("currentUID", res.data.slice(15))
             navigate('/profile')
             return (<Navbar />).forceUpdateHandler
@@ -34,20 +34,29 @@ export default function Login() {
             return (<Navbar />).forceUpdateHandler
         }
         console.log(sessionStorage.getItem("currentUID"))
-        
+
     };
 
     const handleFailure = (response) => {
         alert("Login Failed :(");
         console.log(response);
     }
-    
+
     return (
         <div>
-            <GoogleLogin
-                onSuccess={handleLogin}
-                onError={handleFailure}
-            />
+            <div class='d-flex justify-content-center'>
+                <h3>Sign in with Google</h3>
+            </div>
+            <div class='d-flex justify-content-center'>
+                <h6> Login to save preferences and rate/review menu items!</h6>
+            </div>
+            <div class='d-flex justify-content-center'>
+                <GoogleLogin
+                    size='large'
+                    onSuccess={handleLogin}
+                    onError={handleFailure}
+                />
+            </div>
         </div>
     )
 }
