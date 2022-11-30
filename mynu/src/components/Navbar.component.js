@@ -31,7 +31,7 @@ export default function Navbar(){
                     {
                         sessionStorage.getItem("currentUID") ? (
                             <li className='navbar-item'>
-                                <button className='logout' onClick={Logout}>Logout</button>
+                                <Link className='nav-link' onClick={Logout} to="/">Logout</Link>
                             </li>
                         ) :  (
                             <li className='navbar-item'>
