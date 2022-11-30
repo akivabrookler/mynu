@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { allergens } from '../utils/allergens';
+import {FormControlLabel, Checkbox, Button, ListItem, List} from '@mui/material';
+import { Link } from "react-router-dom";
+
+
 
 const config = require('../config.json')
 
@@ -50,31 +54,30 @@ export default class Profile extends Component {
         });
     }
 
-    onChangePreference = (e) => {
-     let resultArray = []
-     if(e.target.checked)
-     {
-        resultArray = this.state.preferences.filter(CheckedId=>
-            CheckedId !== e.target.value
-        )
-        resultArray.push(e.target.value)
-     }
-     else
-     {
-        resultArray = this.state.preferences.filter(CheckedId=>
-            CheckedId !== e.target.value
-        )
-     }
+    onChangePreference = (state, preference) => {
+      let resultArray = []
+      if(state)
+      {
+          resultArray = this.state.preferences.filter(CheckedId=>
+            CheckedId !== preference
+          )
+          resultArray.push(preference)
+      }
+      else
+      {
+          resultArray = this.state.preferences.filter(CheckedId=>
+            CheckedId !== preference
+          )
+      }
 
-     this.setState({
-        preferences: resultArray
-     })
+      this.setState({
+          preferences: resultArray
+      })
 
-     console.log(resultArray)
+      console.log(resultArray)
     }
 
-    onSubmit(e){
-        e.preventDefault();
+    onSubmit(){
         let uid = sessionStorage.getItem('currentUID');
 
         const profile = {
@@ -87,13 +90,6 @@ export default class Profile extends Component {
 
         axios.post( config.api_url + 'profiles/update/' + uid, profile)
          .then(res => console.log(res.data));
-
-        this.setState({
-            username: '',
-            email: '', 
-            checkboxes: Array(allergens.length).fill(false),
-            preferences: []
-        })
     }
 
     
@@ -101,38 +97,22 @@ export default class Profile extends Component {
     render(){
           
         return (
-        <div>
-        <form onSubmit={this.onSubmit}>
-          <label>
-            Username    
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-            />
-          </label>
-          <label>
-          Select Preferences
-          {allergens.map(({name}, index) => {
-            return (
-                <li key={index}>
-                <div className='allergens-list-item'>
-                 <input 
-                 type="checkbox"
-                 id={`custom-checkbox-${index}`}
-                 name={name}
-                 value={name}
-                 checked={this.state.checkboxes[index]}
-                 onChange={this.onChangePreference}
-                 />
-                  <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                </div>
-                </li>
-            )
-          })}
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+        <div class="container text-center">
+          <h1>Welcome {this.state.username}!</h1>
+          <h5>Select your dietary preferences below, so Mynu can automatically filter for you.</h5>
+          <List>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("vegetarian")} onChange={e=>this.onChangePreference(e.target.checked, "vegetarian")}/>} label="Vegetarian" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("eggs")} onChange={e=>this.onChangePreference(e.target.checked, "eggs")}/>} label="Egg Free" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("vegan")} onChange={e=>this.onChangePreference(e.target.checked, "vegan")}/>} label="Vegan" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("gluten")} onChange={e=>this.onChangePreference(e.target.checked, "gluten")}/>} label="Gluten Free" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("tree nuts")} onChange={e=>this.onChangePreference(e.target.checked, "tree nuts")}/>} label="Tree Nut Free" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("wheat")} onChange={e=>this.onChangePreference(e.target.checked, "wheat")}/>} label="Wheat Free" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("dairy")} onChange={e=>this.onChangePreference(e.target.checked, "dairy")}/>} label="Dairy Free" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("fish")} onChange={e=>this.onChangePreference(e.target.checked, "fish")}/>} label="Fish Free" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("soy")} onChange={e=>this.onChangePreference(e.target.checked, "soy")}/>} label="Soy Free" /></ListItem>
+              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("crustacean")} onChange={e=>this.onChangePreference(e.target.checked, "crustacean")}/>} label="Crustacean Shellfish Free"/></ListItem>   
+          </List>
+          <Button variant = "contained" onClick ={this.onSubmit} component={Link} to = "/menu">Submit</Button>
         </div>
         );
   }
