@@ -177,7 +177,7 @@ export default class MenuList extends Component {
                     </div>
                     <div class="d-flex-column col-6 p-3">
                         <div class="p-3 d-flex-column bg-light">
-                            <h6 class = "text-center align-bottom font-weight-bold" >Dietary Restrictions</h6>
+                            <h4 class = "text-center align-bottom font-weight-bold" ><u>Dietary Restrictions</u></h4>
                             <List>
                                 <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegetarian} onChange={e=>{this.setState({ vegetarian: e.target.checked}, this.handleFilter)}}/>} label="Vegetarian" /></ListItem>
                                 <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.eggFree} onChange={e=>{this.setState({ eggFree: e.target.checked}, this.handleFilter)}}/>} label="Egg Free" /></ListItem>

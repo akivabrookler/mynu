@@ -14,15 +14,16 @@
 } */
 
 .header {
-    font-size: 28px;
-    font-weight: 500;
+    font-size: 70px;
+    font-weight: 1000;
+    font-family: garamond;
     letter-spacing: 0;
     line-height: 1.5em;
     padding-bottom: 15px;
     position: relative;
     background-color: #61dafb;
     color: darkblue;
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
 
   /* .header:before {

@@ -150,7 +150,7 @@ export default class MenuItem extends Component {
         let allergenList=[];
         allergens.forEach((item, index) => {
             allergenList.push( <ListItem key={index} class = "list-group-item">
-                <Chip label={item} color="secondary" />
+                <Chip label={item} size="medium" color="secondary" />
               </ListItem>)
         })
 
@@ -164,7 +164,8 @@ export default class MenuItem extends Component {
                 <div class="body">
                     <Stack direction="row" spacing={2}>
                         <h1 class='subheading'>Dining Hall:</h1>
-                        <Chip label={this.state.dining_hall} color="secondary" />
+                        <Chip
+                        label={this.state.dining_hall} size="medium" color="secondary"/>
                     </Stack>
                         <List>
                         <Stack direction="row" spacing={1}>
