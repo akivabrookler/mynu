@@ -3,6 +3,8 @@ import axios from 'axios';
 import {ListItem, List, IconButton, ButtonGroup } from '@mui/material';
 import {ThumbUp, ThumbDown} from '@mui/icons-material';
 
+const config = require('../config.json')
+
 export default class MenuItem extends Component {
 
     constructor(props) {
@@ -26,7 +28,7 @@ export default class MenuItem extends Component {
     async componentDidMount() {
         console.log("Called mount")
         let id =(window.location.pathname).replace("/menu/","");
-        await axios.get('http://localhost:5000/menu_items/' + id)
+        await axios.get(config.api_url +'menu_items/' + id)
             .then(response => {
             this.setState({
                 id: response.data._id,
@@ -52,7 +54,7 @@ export default class MenuItem extends Component {
         console.log(this.state)
         let id =(window.location.pathname).replace("/menu/","");
         if (this.state.liked){
-             await axios.post('http://localhost:5000/menu_items/likedec/' + id, {})
+             await axios.post( config.api_url + 'menu_items/likedec/' + id, {})
               .then(function (response) {
                 console.log(response);
                 liked = false;
@@ -62,7 +64,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
         }else{
-            await axios.post('http://localhost:5000/menu_items/likeinc/' + id, {})
+            await axios.post(config.api_url +'menu_items/likeinc/' + id, {})
               .then(function (response) {
                 console.log(response);
                 liked = true;
@@ -73,7 +75,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
               if (this.state.disliked){
-                await axios.post('http://localhost:5000/menu_items/dislikedec/' + id, {})
+                await axios.post(config.api_url +'menu_items/dislikedec/' + id, {})
                 .then(function (response) {
                     console.log(response);
                     disliked = false;
@@ -96,7 +98,7 @@ export default class MenuItem extends Component {
         console.log(this.state)
         let id =(window.location.pathname).replace("/menu/","");
         if (this.state.disliked){
-             await axios.post('http://localhost:5000/menu_items/dislikedec/' + id, {})
+             await axios.post(config.api_url +'menu_items/dislikedec/' + id, {})
               .then(function (response) {
                 console.log(response);
                 disliked = false;
@@ -106,7 +108,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
         }else{
-            await axios.post('http://localhost:5000/menu_items/dislikeinc/' + id, {})
+            await axios.post(config.api_url +'menu_items/dislikeinc/' + id, {})
               .then(function (response) {
                 console.log(response);
                 disliked = true;
@@ -117,7 +119,7 @@ export default class MenuItem extends Component {
                 console.log(error);
               });
               if (this.state.liked){
-                await axios.post('http://localhost:5000/menu_items/likedec/' + id, {})
+                await axios.post(config.api_url +'menu_items/likedec/' + id, {})
                 .then(function (response) {
                     console.log(response);
                     liked = false;

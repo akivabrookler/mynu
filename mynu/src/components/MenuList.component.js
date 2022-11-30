@@ -3,6 +3,7 @@ import React, { Component }  from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
+const config = require('../config.json')
 
 export default class MenuList extends Component {
     constructor (props){
@@ -47,7 +48,7 @@ export default class MenuList extends Component {
             let _peanuts = false;
 
 
-            axios.get('http://localhost:5000/profiles/' + uid)
+            axios.get(config.api_url + 'profiles/' + uid)
              .then(response => {
                 if (response.data.preferences.includes('vegan')) {
                     _vegan = true;
@@ -101,7 +102,7 @@ export default class MenuList extends Component {
         }
 
 
-        await axios.get('http://localhost:5000/menu_items/')
+        await axios.get( config.api_url + 'menu_items/')
             .then(response => {
                 for (let i in response.data){
                     items.push(response.data[i].name);
@@ -119,7 +120,7 @@ export default class MenuList extends Component {
     async handleFilter(){
         let items = [];
         let ids =[];
-        await axios.get('http://localhost:5000/menu_items/')
+        await axios.get(config + 'menu_items/')
             .then(response => {
                 for (let i in response.data){
                     if( (!this.state.search || (response.data[i].name).toLowerCase().includes((this.state.search))) &&

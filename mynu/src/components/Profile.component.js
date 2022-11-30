@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { allergens } from '../utils/allergens';
 
+const config = require('../config.json')
+
 export default class Profile extends Component {
     constructor(props){
         super(props);
@@ -27,7 +29,7 @@ export default class Profile extends Component {
         window.location = '/login';
       }
 
-      axios.get('http://localhost:5000/profiles/' + uid)
+      axios.get( config.api_url +'profiles/' + uid)
         .then(response => {
           console.log('cUID email: ' + response.data.email);
           console.log('cUID username: ' + response.data.username);
@@ -83,7 +85,7 @@ export default class Profile extends Component {
 
         console.log(profile);
 
-        axios.post('http://localhost:5000/profiles/update/' + uid, profile)
+        axios.post( config.api_url + 'profiles/update/' + uid, profile)
          .then(res => console.log(res.data));
 
         this.setState({

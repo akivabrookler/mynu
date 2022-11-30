@@ -6,6 +6,8 @@ import axios from 'axios'
 import Logout_Navbar from "./Logout_Navbar.component";
 import Navbar from "./Navbar.component";
 
+const config = require('../config.json')
+
 export default function Login() {
     const navigate = useNavigate();
 
@@ -19,7 +21,7 @@ export default function Login() {
             email: decoded.email
         }
 
-        const res = await axios.post('http://localhost:5000/login/add', profile)
+        const res = await axios.post(config.api_url +'login/add', profile)
         
         if (res.data.slice(0,13) === "Existing User") {
             sessionStorage.setItem("currentUID", res.data.slice(15))
