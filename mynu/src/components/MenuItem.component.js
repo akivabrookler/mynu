@@ -160,24 +160,36 @@ export default class MenuItem extends Component {
         return (
             <div class ='background'>
                 {/* <h1 class="text-center font-italic font-weight-light">{this.state.name}</h1> */}
-                <h1 class="header">{this.state.name}</h1>
-                <div class="body">
-                    <Stack direction="row" spacing={2}>
-                        <h1 class='subheading'>Dining Hall:</h1>
-                        <Chip
-                        label={this.state.dining_hall} size="medium" color="secondary"/>
-                    </Stack>
-                        <List>
-                        <Stack direction="row" spacing={1}>
-                        <h1 class='subheading'>Ingredient information:</h1>
-                            {allergenList}
+                <h1 class="header">
+                {this.state.name}</h1>
+                    <div class="body">
+                        <Stack
+                        direction="row" spacing={2}
+                        alignItems="center"
+                        justifyContent="center">
+                            <h1 class='subheading'>Dining Hall:</h1>
+                            <Chip
+                            label={this.state.dining_hall} size="medium" color="secondary"/>
                         </Stack>
-                        </List>
-                </div>
-                <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                            <List>
+                            <Stack
+                            direction="row" spacing={1}
+                            alignItems="center"
+                            justifyContent="center">
+                            <h1 class='subheading'>Ingredient information:</h1>
+                                {allergenList}
+                            </Stack>
+                            </List>
+                    </div>
+                <Stack
+                alignItems="center"
+                justifyContent="center">
+                <ButtonGroup
+                variant="contained" aria-label="outlined primary button group">
                     <IconButton onClick={()=>{this.handleLike()}} color ={clickedLikeColoring}> {this.state.likes}<ThumbUp/> </IconButton>
                     <IconButton onClick={()=>{this.handleDislike()}} color ={clickedDislikeColoring}> {this.state.dislikes}<ThumbDown/> </IconButton>
-                </ButtonGroup>                
+                </ButtonGroup>   
+                </Stack>          
             </div>
         );
     }

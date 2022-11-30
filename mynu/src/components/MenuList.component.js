@@ -45,10 +45,9 @@ export default class MenuList extends Component {
             let _fish = false;
             let _soy = false;
             let _crustacean = false;
-            let _peanuts = false;
 
 
-            axios.get(config.api_url + 'profiles/' + uid)
+            await axios.get(config.api_url + 'profiles/' + uid)
                 .then(response => {
                     if (response.data.preferences.includes('vegan')) {
                         _vegan = true;
@@ -58,9 +57,6 @@ export default class MenuList extends Component {
                     }
                     if (response.data.preferences.includes('gluten')) {
                         _gluten = true;
-                    }
-                    if (response.data.preferences.includes('peanuts')) {
-                        _peanuts = true;
                     }
                     if (response.data.preferences.includes('tree nuts')) {
                         _tree_nut = true;
@@ -101,20 +97,7 @@ export default class MenuList extends Component {
                 })
         }
 
-
-        await axios.get(config.api_url + 'menu_items/')
-            .then(response => {
-                for (let i in response.data) {
-                    items.push(response.data[i].name);
-                    ids.push(response.data[i]._id);
-                }
-                console.log("For loop");
-                console.log(items.length);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        this.setState({ items: items, ids: ids });
+        this.handleFilter();
     }
 
     async handleFilter() {
@@ -170,7 +153,6 @@ export default class MenuList extends Component {
                 </div>
                 <div class="d-flex flex-row">
                     <div class="d-flex-column col-6">
-
                         <List class="list-group">
                             {itemList}
                         </List>

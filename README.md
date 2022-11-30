@@ -1,40 +1,60 @@
-# mynu
-    WELCOME TO MYNU!
+# Mynu
+WELCOME TO MYNU!
     
-1. Cloning
-Unzip the tarball of this github repository as follows:
-	~$ tar -xzvf (REPOSITORY TARBALL).tgz
-2. Installation Process
-	Run the following commands:
-		~$ cd mynu/mynu
-		~/mynu/mynu$ npm install
-		~/mynu/mynu$ cd ../backend
-		~mynu/backend$ npm install
-    Note that the ~ preceding the $ could be any path, depending on where you unzipped the tarball. For simplicity’s sake, we will assume you ran this command while in the root directory. If you didn’t, just run the following commands from the directory you cloned this repository into. 
-3. Launching Mynu
-	From the project report, get the MongoDB url, and paste it into the .env file within the backend folder as the value of the ATLAS_URI variable.
-			~$ cd mynu/backend
-            ~/mynu/backend$ (edit .env)
-    Navigate to mynu/backend and run the following command:
-            ~$ cd mynu/backend
-            ~/mynu/backend$ nodemon server
-	If you encounter an error regarding port use on macOS, go to your System Preferences → Sharing→ Deselect AirDrop Receiver. Then try again. 
-    From backend, run the following:
-            ~/mynu/backend$ cd ../mynu
-            ~/mynu/mynu$ npm start
-	You should be taken to the Mynu webpage. 
+## Cloning
+Run the following command:
+`~$ git clone https://github.com/akivabrookler/mynu.git`
 
-You are all set up to use Mynu! Walkthroughs for usage are available below. 
+## Package Installation
+Run the following commands:\
+		`~$ cd mynu/mynu`\
+		`~/mynu/mynu$ npm install`\
+		`~/mynu/mynu$ cd ../backend`\
+		`~mynu/backend$ npm install`\
+		\
+Note that the ~ preceding the $ could be any path, depending on where you unzipped the tarball. For simplicity’s sake, we will assume you ran this command while in the root directory. If you didn’t, just run the following commands from the directory you cloned this repository into.
 
-4. Creating a Profile:
-    a. Login and Profile are linked.
-    b. If you have not yet logged in with Google, clicking either will redirect you to Login, which includes that crucial first step.
-    c. Next you will be directed to Profile, where you have the option to change your username, and select your dietary preferences.
-5. Sign In:
-    a. For returning users, clicking the Login button will function in a similar manner.
-    b. The dietary preferences and username can still be modified.
-6. Searching Menu Items:
-    You have two options:
-        a. Filter based on your dietary preferences
-        b. If you know what specific items you want, use the search bar at the top of the page to get straight there
-    Click on the items of your choice to learn more about that menu offering.Click the like or dislike button to let other users know how you feel about an item.
+##  Launching Mynu
+Ensure you are not connected to UCLA_WEB, or else the following steps will fail. 
+
+Set ATLAS_URI in mynu/backend/.env to the private URI needed to access your database.\
+
+Set the api_url in mynu/mynu/src/config.json to the public API for your database. (Default is "http://localhost:5000/")
+\
+\
+Navigate to the backend directory and start the server:\
+            `~$ cd mynu/backend`\
+            `~/mynu/backend$ nodemon server`\
+\
+If you encounter an error regarding port use on macOS, go to your System Preferences → Sharing→ Deselect AirDrop Receiver. Then try again.\
+\
+Navigate to the mynu (frontend) directory and start the client:\
+From backend, run the following:\
+            `~$ cd mynu`\
+            `~/mynu/mynu$ npm start`\
+	    \
+You should be taken to the Mynu webpage. 
+
+You are all set up to use Mynu! 
+
+## Walkthrough
+### Login
+Click "Login" or "Profile" on the top bar of the page to login with google.\
+\
+You can still use Mynu without logging in, but logging in will give you added features:
+1. Save your prefrences
+2. Like and dislike Menu Items
+
+### Profile
+After you login, you can create or edit your profile at any time. Click on "Profile" on the top bar of the page, select your dietary preferences, and click submit. The website will then redirect you to the Menu Items page and show you the filtered list.
+
+### Menu Items
+Click "Menu Items" on the top bar of the page to access the Menu Items page.\
+\
+If you are logged in, the page will automatically load your saved dietary preferences and filter the Menu accordingly. You can also manually select dietary preferences or search the menu items by name.\
+\
+Click on any menu item to view it in more detail!
+
+### Menu Item
+
+After you click on a menu item, you will be directed to a new page to vieww it in more detail. Here you can see the full list of allergens, the dining hall that has it, and the number of likes and dislikes the item has. If you are logged in, you can like or dislike the item to let others know how you feel. 

@@ -23,6 +23,11 @@
     position: relative;
     background-color: #61dafb;
     color: darkblue;
+    text-align: center;
+    position: relative;
+    /* left: 20%; */
+    /* right: 20%; */
+    margin: 20;
     /* text-decoration: underline; */
   }
 
