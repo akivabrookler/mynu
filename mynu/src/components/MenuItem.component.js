@@ -46,6 +46,10 @@ export default class MenuItem extends Component {
     }
 
     async handleLike() { 
+
+        if (sessionStorage.getItem('currentUID') == null){
+            return
+        }
         let liked = this.state.liked;
         let likes = this.state.likes
         let disliked = this.state.disliked;
@@ -90,6 +94,11 @@ export default class MenuItem extends Component {
     }
 
     async handleDislike() { 
+
+        if (sessionStorage.getItem('currentUID') == null){
+            return
+        }
+
         let disliked = this.state.disliked;
         let dislikes = this.state.dislikes
         let liked = this.state.liked;
