@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
 import axios from 'axios';
-import {ListItem, List, IconButton, ButtonGroup } from '@mui/material';
+import {ListItem, List, IconButton, ButtonGroup, Stack, Chip } from '@mui/material';
 import {ThumbUp, ThumbDown} from '@mui/icons-material';
-
+import './MenuItem.css';
 const config = require('../config.json')
 
 export default class MenuItem extends Component {
@@ -149,30 +149,34 @@ export default class MenuItem extends Component {
         let allergens = this.state.allergens;
         let allergenList=[];
         allergens.forEach((item, index) => {
-            allergenList.push( <ListItem key={index} class = "list-group-item">{item}</ListItem>)
+            allergenList.push( <ListItem key={index} class = "list-group-item">
+                <Chip label={item} color="secondary" />
+              </ListItem>)
         })
 
         let clickedLikeColoring = (this.state.liked) ? "primary" : "";
         let clickedDislikeColoring = (this.state.disliked) ? "error" : "";
 
         return (
-            <div>
-                <h1 class="text-center font-italic font-weight-light">{this.state.name}</h1>
-                <div class="d-flex align-items-left flex-column">
-                    <h1>Dining Hall: {this.state.dining_hall}</h1>
-                    <h1>Allergens</h1>
-                    <List >
-                        {allergenList}
-                    </List>
+            <div class ='background'>
+                {/* <h1 class="text-center font-italic font-weight-light">{this.state.name}</h1> */}
+                <h1 class="header">{this.state.name}</h1>
+                <div class="body">
+                    <Stack direction="row" spacing={2}>
+                        <h1 class='subheading'>Dining Hall:</h1>
+                        <Chip label={this.state.dining_hall} color="secondary" />
+                    </Stack>
+                        <List>
+                        <Stack direction="row" spacing={1}>
+                        <h1 class='subheading'>Ingredient information:</h1>
+                            {allergenList}
+                        </Stack>
+                        </List>
                 </div>
                 <ButtonGroup variant="contained" aria-label="outlined primary button group">
                     <IconButton onClick={()=>{this.handleLike()}} color ={clickedLikeColoring}> {this.state.likes}<ThumbUp/> </IconButton>
                     <IconButton onClick={()=>{this.handleDislike()}} color ={clickedDislikeColoring}> {this.state.dislikes}<ThumbDown/> </IconButton>
-                </ButtonGroup>
-
-
-
-                
+                </ButtonGroup>                
             </div>
         );
     }
