@@ -158,17 +158,21 @@ export default class MenuItem extends Component {
         return (
             <div>
                 <h1 class="text-center font-italic font-weight-light">{this.state.name}</h1>
-                <div class="d-flex align-items-left flex-column">
-                    <h1>Dining Hall: {this.state.dining_hall}</h1>
-                    <h1>Allergens</h1>
-                    <List >
-                        {allergenList}
-                    </List>
+                <div class="d-flex align-items-center flex-column p-3 pb-5">
+                    <h3 className='text-center align-center text-black-50'>Dining Hall: {this.state.dining_hall}</h3>
+                    <h3 className='text-info text-center align-center'>Allergens</h3>
+                    <div class='border border-info text-center align-top bg-light p-3 w-25'>
+                        <List>
+                            {allergenList}
+                        </List>
+                    </div>
                 </div>
-                <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                    <IconButton onClick={()=>{this.handleLike()}} color ={clickedLikeColoring}> {this.state.likes}<ThumbUp/> </IconButton>
-                    <IconButton onClick={()=>{this.handleDislike()}} color ={clickedDislikeColoring}> {this.state.dislikes}<ThumbDown/> </IconButton>
-                </ButtonGroup>
+                <div class="d-flex align-items-center flex-column">
+                    <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                        <IconButton onClick={()=>{this.handleLike()}} color ={clickedLikeColoring}> {this.state.likes}<ThumbUp/> </IconButton>
+                        <IconButton onClick={()=>{this.handleDislike()}} color ={clickedDislikeColoring}> {this.state.dislikes}<ThumbDown/> </IconButton>
+                    </ButtonGroup>
+                </div>
 
 
 

@@ -15,6 +15,8 @@ Run the following commands:\
 Note that the ~ preceding the $ could be any path, depending on where you unzipped the tarball. For simplicity’s sake, we will assume you ran this command while in the root directory. If you didn’t, just run the following commands from the directory you cloned this repository into.
 
 ##  Launching Mynu
+Ensure you are not connected to UCLA_WEB, or else the following steps will fail. 
+
 Set ATLAS_URI in mynu/backend/.env to the private URI needed to access your database.\
 
 Set the api_url in mynu/mynu/src/config.json to the public API for your database. (Default is "http://localhost:5000/")

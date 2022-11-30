@@ -153,7 +153,6 @@ export default class MenuList extends Component {
                 </div>
                 <div class="d-flex flex-row">
                     <div class="d-flex-column col-6">
-
                         <List class="list-group">
                             {itemList}
                         </List>
