@@ -29,12 +29,17 @@ export default class Profile extends Component {
 
       axios.get('http://localhost:5000/profiles/' + uid)
         .then(response => {
+          console.log('cUID email: ' + response.data.email);
+          console.log('cUID username: ' + response.data.username);
+          console.log('cUID preferences: ' + response.data.preferences);
+
           this.setState({
-            username: response.data.name,
+            username: response.data.username,
             email: response.data.email,
             preferences: response.data.preferences
           })
         })
+      console.log(this.state);
     }
 
     onChangeUsername(e){
