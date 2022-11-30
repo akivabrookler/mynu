@@ -132,6 +132,7 @@ export default class MenuList extends Component {
                         (!this.state.wheatFree || !response.data[i].allergens.includes("wheat")) &&
                         (!this.state.fishFree || !response.data[i].allergens.includes("fish")) &&
                         (!this.state.soyFree || !response.data[i].allergens.includes("soy")) &&
+                        (!this.state.dairyFree || !response.data[i].allergens.includes("dairy")) &&
                         (!this.state.crustaceanShellfishFree || !response.data[i].allergens.includes("crustacean shellfish")) 
                     ){
                         items.push(response.data[i].name);
