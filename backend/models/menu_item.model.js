@@ -12,7 +12,9 @@ const MenuItemSchema = new Schema({
         required: true,
         unique: true
     },
-    ingredients: [IngredientSchema]
+    ingredients: [IngredientSchema],
+    dislikes: 0,
+    likes: 0
 });
 
 const Menu_Item = mongoose.model('Menu Item', MenuItemSchema);

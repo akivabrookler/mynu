@@ -25,12 +25,6 @@ export default class Navbar extends Component{
                         <li className='navbar-item'>
                             <Link to="/profile" className='nav-link'>Profile</Link>
                         </li>
-                        <li className='navbar-item'>
-                            <Link to="/createProfile" className='nav-link'>Create Profile</Link>
-                        </li>
-                        {/* <li className='navbar-item'>
-                            <Link to="/login" className='nav-link'>Login</Link>
-                        </li> */}
                         {
                             sessionStorage.getItem("currentUID") ? (
                                 <li className='navbar-item'>
