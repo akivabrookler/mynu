@@ -16,7 +16,8 @@ Note that the ~ preceding the $ could be any path, depending on where you unzipp
 
 ##  Launching Mynu
 Set ATLAS_URI in mynu/backend/.env to the private URI needed to access your database.\
-Set the api_url in mynu/frontend/src/config.json to the public API for your database. (Default is "http://localhost:5000/")
+
+Set the api_url in mynu/src/config.json to the public API for your database. (Default is "http://localhost:5000/")
 \
 \
 Navigate to the backend directory and start the server:\
