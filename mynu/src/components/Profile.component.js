@@ -113,6 +113,7 @@ export default class Profile extends Component {
               <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("crustacean")} onChange={e=>this.onChangePreference(e.target.checked, "crustacean")}/>} label="Crustacean Shellfish Free"/></ListItem>   
           </List>
           <Button variant = "contained" onClick ={this.onSubmit} component={Link} to = "/menu">Submit</Button>
+          <Button variant='contained' onClick={() => {this.setState({preferences: []})}}> Reset </Button>
         </div>
         );
   }
