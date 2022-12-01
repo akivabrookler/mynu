@@ -14,14 +14,14 @@
 } */
 
 .header {
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 1000;
     font-family: garamond;
     letter-spacing: 0;
     line-height: 1.5em;
     padding-bottom: 15px;
     position: relative;
-    background-color: #61dafb;
+    background-color: #1cbfff;
     color: darkblue;
     text-align: center;
     position: relative;

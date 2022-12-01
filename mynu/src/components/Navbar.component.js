@@ -18,7 +18,7 @@ export default function Navbar(){
     }
     
     return(
-        <nav className = "navbar navbar-light bg-info navbar-expand-lg">
+        <nav className = "navbar navbar-dark bg-dark navbar-expand-lg">
             <div className='d-flex flex-row'>
                 <div className='d-flex-col w-3 p-3 pt-3 pb-2 align-content-center align-baseline'>
                     <Link to="/" className='navbar-brand fw-bold'>Mynu</Link>
