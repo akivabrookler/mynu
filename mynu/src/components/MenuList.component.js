@@ -88,15 +88,6 @@ export default class MenuList extends Component {
                     if (response.data.preferences.includes('fish')) {
                         _fish = true;
                     }
-                    // if (response.data.preferences.includes('BPlate')) {
-                    //     _BPlate = true;
-                    // }
-                    // if (response.data.preferences.includes('Epicuria')) {
-                    //     _Epicuria = true;
-                    // }
-                    // if (response.data.preferences.includes('BCafe')) {
-                    //     _BCafe = true;
-                    // }
 
                     this.setState({
                         vegetarian: _vegetarian,
