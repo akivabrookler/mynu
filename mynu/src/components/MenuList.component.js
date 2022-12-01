@@ -23,7 +23,12 @@ export default class MenuList extends Component {
             soyFree: false,
             crustaceanShellfishFree: false,
             search: "",
+            dining_halls: "",
+            best_dining_hall: "",
+            total_item_count: 0,
         };
+
+        this.best_diningHall = this.best_diningHall.bind(this);
 
     }
 
@@ -103,6 +108,7 @@ export default class MenuList extends Component {
     async handleFilter() {
         let items = [];
         let ids = [];
+        let dining_hall = [];
         await axios.get(config.api_url + 'menu_items/')
             .then(response => {
                 for (let i in response.data) {
@@ -120,6 +126,7 @@ export default class MenuList extends Component {
                     ) {
                         items.push(response.data[i].name);
                         ids.push(response.data[i]._id);
+                        dining_hall.push(response.data[i].dining_hall)
                     }
 
                 }
@@ -129,9 +136,29 @@ export default class MenuList extends Component {
             .catch((error) => {
                 console.log(error);
             });
-        this.setState({ items: items, ids: ids });
+        
+        
+        this.setState({ items: items, ids: ids, dining_halls: dining_hall});
+        let best = this.best_diningHall();
+        this.setState({ best_dining_hall: best[0], total_item_count: best[1] });
+        console.log(this.state);
     }
 
+    async best_diningHall () {
+        console.log("Entered best dining hall func")
+        let diningHalls = {BPlate: "BPlate", Epicuria: "Epicuria",BCafe: "BCafe"};
+
+        let BPlate = this.state.dining_halls.filter(item => item == "BPlate").length;
+        let Epicuria = this.state.dining_halls.filter(item => item == "Epicuria").length;
+        let BCafe = this.state.dining_halls.filter(item => item == "BCafe").length;
+        
+        console.log("Bplate count")
+        let best = Math.max(BPlate, Epicuria, BCafe);
+
+        console.log([diningHalls[best],best]);
+        return [diningHalls[best],best]
+
+    }
 
     render() {
         let items = this.state.items;
@@ -141,6 +168,7 @@ export default class MenuList extends Component {
             itemList.push(<ListItemButton key={index} class="list-group-item" onClick={() => { console.log("Clicked") }} component={Link} to={"/menu/" + ids[index]}>{item}</ListItemButton>)
         })
 
+        
 
         return (
             <div class="container text-center">
@@ -189,6 +217,10 @@ export default class MenuList extends Component {
                             this.handleFilter)
                         }}> Reset </Button>
                     </div>
+                </div>
+                <div>
+                    <h5>hello</h5>
+                    <h5>{this.state.best_dining_hall}</h5>
                 </div>
             </div>
         );
