@@ -1,4 +1,4 @@
-import { FormControlLabel, Button, Checkbox, TextField, ListItem, ListItemButton, List, FormControl } from '@mui/material';
+import { FormControlLabel, Button, Checkbox, TextField, ListItem, ListItemButton, List, FormControl, Typography } from '@mui/material';
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ export default class MenuList extends Component {
             search: "",
         };
 
-        this.best_diningHall = this.best_diningHall.bind(this);
+        // this.find_best_dining_hall = this.find_best_dining_hall.bind(this);
 
     }
 
@@ -134,24 +134,24 @@ export default class MenuList extends Component {
         
         
         this.setState({ items: items, ids: ids, dining_halls: dining_hall});
-        let best = this.best_diningHall();
-        this.setState({ best_dining_hall: best[0], total_item_count: best[1] });
+        let best = this.find_best_dining_hall();
         console.log(this.state);
     }
 
-    async best_diningHall () {
+    async find_best_dining_hall () {
         console.log("Entered best dining hall func")
-        let diningHalls = {BPlate: "BPlate", Epicuria: "Epicuria",BCafe: "BCafe"};
-
-        let BPlate = this.state.dining_halls.filter(item => item == "BPlate").length;
-        let Epicuria = this.state.dining_halls.filter(item => item == "Epicuria").length;
-        let BCafe = this.state.dining_halls.filter(item => item == "BCafe").length;
+        let diningHalls = {
+            "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length, 
+            "Epicuria": this.state.dining_halls.filter(item => item == "Epicuria").length, 
+            "BCafe": this.state.dining_halls.filter(item => item == "BCafe").length};
         
-        console.log("Bplate count")
-        let best = Math.max(BPlate, Epicuria, BCafe);
+        let best = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b });
 
-        console.log([diningHalls[best],best]);
-        return [diningHalls[best],best]
+        console.log("BEST")
+        console.log([best, diningHalls[best]])
+        this.setState({best_dining_hall: best, total_item_count: diningHalls[best]});
+        console.log(this.state);
+        // return [best, diningHalls[best]];
 
     }
 
@@ -176,6 +176,11 @@ export default class MenuList extends Component {
                 </div>
                 <div class="d-flex flex-row">
                     <div class="d-flex-column col-6">
+                    <div>
+                        <Typography variant='h6' fontWeight={'bold'}>
+                            Best Dining Hall: {this.state.best_dining_hall}
+                        </Typography>
+                    </div>
                         <List class="list-group">
                             {itemList}
                         </List>
@@ -212,10 +217,6 @@ export default class MenuList extends Component {
                             this.handleFilter)
                         }}> Reset </Button>
                     </div>
-                </div>
-                <div>
-                    <h5>hello</h5>
-                    <h5>{this.state.best_dining_hall}</h5>
                 </div>
             </div>
         );
