@@ -105,6 +105,7 @@ export default class MenuList extends Component {
     async handleFilter() {
         let items = [];
         let ids = [];
+        let dining_hall = [];
         await axios.get(config.api_url + 'menu_items/')
             .then(response => {
                 for (let i in response.data) {
@@ -121,7 +122,8 @@ export default class MenuList extends Component {
                         (!this.state.crustaceanShellfishFree || !response.data[i].allergens.includes("crustacean shellfish"))
                     ) {
                         items.push(response.data[i].name);
-                        ids.push(response.data[i]._id);
+                        ids.push(response.data[i]._id); 
+                        dining_hall.push(response.data[i].dining_hall)
                     }
 
                 }
