@@ -23,9 +23,13 @@ export default class MenuList extends Component {
             soyFree: false,
             crustaceanShellfishFree: false,
             search: "",
+            best_dining_hall: '',
+            dining_halls: [],
+            total_item_count: 0
         };
 
-        // this.find_best_dining_hall = this.find_best_dining_hall.bind(this);
+        this.find_best_dining_hall = this.find_best_dining_hall.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
     }
 
@@ -95,17 +99,21 @@ export default class MenuList extends Component {
                         crustaceanShellfishFree: _crustacean,
                     })
 
-                    console.log(this.state);
+                    //console.log(this.state);
                 })
         }
-
+        console.log('before');
         this.handleFilter();
+        console.log('componentDidMount', this.state);
     }
 
     async handleFilter() {
+
+        console.log('entered handleFilter');
         let items = [];
         let ids = [];
         let dining_hall = [];
+
         await axios.get(config.api_url + 'menu_items/')
             .then(response => {
                 for (let i in response.data) {
@@ -136,12 +144,16 @@ export default class MenuList extends Component {
         
         
         this.setState({ items: items, ids: ids, dining_halls: dining_hall});
-        let best = this.find_best_dining_hall();
-        console.log(this.state);
+        console.log('inside handleFilter', this.state.best_dining_hall);
     }
 
-    async find_best_dining_hall () {
-        console.log("Entered best dining hall func")
+    handleChange() {
+        this.handleFilter();
+        this.find_best_dining_hall();
+    }
+
+    find_best_dining_hall () {
+        console.log("Entered best dining hall func");
         let diningHalls = {
             "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length, 
             "Epicuria": this.state.dining_halls.filter(item => item == "Epicuria").length, 
@@ -149,11 +161,14 @@ export default class MenuList extends Component {
         
         let best = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b });
 
-        console.log("BEST")
-        console.log([best, diningHalls[best]])
+        console.log("BEST");
+        console.log([best, diningHalls[best]]);
         this.setState({best_dining_hall: best, total_item_count: diningHalls[best]});
+        console.log(best);
+        console.log(diningHalls[best]);
         console.log(this.state);
-        // return [best, diningHalls[best]];
+        console.log('inside find_best...', this.state.best_dining_hall, this.state.total_item_count);
+        return [best, diningHalls[best]];
 
     }
 
@@ -172,7 +187,7 @@ export default class MenuList extends Component {
                 <div class="d-flex-row align-content-center p-3">
                     <h1 class='shadow-lg bg-info text-light'>Menu Items</h1>
                     <FormControl fullWidth>
-                        <FormControlLabel labelPlacement="top" control={<TextField label="Search Menu" />} onChange={event => this.setState({ search: (event.target.value).toLowerCase() }, this.handleFilter)} />
+                        <FormControlLabel labelPlacement="top" control={<TextField label="Search Menu" />} onChange={event => this.setState({ search: (event.target.value).toLowerCase() }, this.handleChange)} />
                     </FormControl>
 
                 </div>
@@ -191,16 +206,16 @@ export default class MenuList extends Component {
                         <div class="p-3 d-flex-column bg-light">
                             <h4 class = "text-center align-bottom font-weight-bold" ><u>Dietary Restrictions</u></h4>
                             <List>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegetarian} onChange={e => { this.setState({ vegetarian: e.target.checked }, this.handleFilter) }} />} label="Vegetarian" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.eggFree} onChange={e => { this.setState({ eggFree: e.target.checked }, this.handleFilter) }} />} label="Egg Free" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegan} onChange={e => { this.setState({ vegan: e.target.checked }, this.handleFilter) }} />} label="Vegan" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.glutenFree} onChange={e => { this.setState({ glutenFree: e.target.checked }, this.handleFilter) }} />} label="Gluten Free" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.treeNutFree} onChange={e => { this.setState({ treeNutFree: e.target.checked }, this.handleFilter) }} />} label="Tree Nut Free" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.wheatFree} onChange={e => { this.setState({ wheatFree: e.target.checked }, this.handleFilter) }} />} label="Wheat Free" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.dairyFree} onChange={e => { this.setState({ dairyFree: e.target.checked }, this.handleFilter) }} />} label="Dairy Free" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.fishFree} onChange={e => { this.setState({ fishFree: e.target.checked }, this.handleFilter) }} />} label="Fish Free" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.soyFree} onChange={e => { this.setState({ soyFree: e.target.checked }, this.handleFilter) }} />} label="Soy Free" /></ListItem>
-                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.crustaceanShellfishFree} onChange={e => { this.setState({ crustaceanShellfishFree: e.target.checked }, this.handleFilter) }} />} label="Crustacean Shellfish Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegetarian} onChange={e => { this.setState({ vegetarian: e.target.checked }, this.handleChange)}} />} label="Vegetarian" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.eggFree} onChange={e => { this.setState({ eggFree: e.target.checked }, this.handleChange) }} />} label="Egg Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegan} onChange={e => { this.setState({ vegan: e.target.checked }, this.handleChange) }} />} label="Vegan" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.glutenFree} onChange={e => { this.setState({ glutenFree: e.target.checked }, this.handleChange) }} />} label="Gluten Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.treeNutFree} onChange={e => { this.setState({ treeNutFree: e.target.checked }, this.handleChange) }} />} label="Tree Nut Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.wheatFree} onChange={e => { this.setState({ wheatFree: e.target.checked }, this.handleChange) }} />} label="Wheat Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.dairyFree} onChange={e => { this.setState({ dairyFree: e.target.checked }, this.handleChange) }} />} label="Dairy Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.fishFree} onChange={e => { this.setState({ fishFree: e.target.checked }, this.handleChange) }} />} label="Fish Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.soyFree} onChange={e => { this.setState({ soyFree: e.target.checked }, this.handleChange) }} />} label="Soy Free" /></ListItem>
+                                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.crustaceanShellfishFree} onChange={e => { this.setState({ crustaceanShellfishFree: e.target.checked },this.handleChange) }} />} label="Crustacean Shellfish Free" /></ListItem>
                             </List>
                         </div>
                         <Button variant='contained' onClick={() => {
@@ -216,7 +231,7 @@ export default class MenuList extends Component {
                                 soyFree: false,
                                 crustaceanShellfishFree: false
                             },
-                            this.handleFilter)
+                            this.handleChange)
                         }}> Reset </Button>
                     </div>
                 </div>
