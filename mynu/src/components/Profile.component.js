@@ -98,48 +98,72 @@ export default class Profile extends Component {
       <div class="container text-center">
         <h1>Welcome {this.state.username}!</h1>
         <h5>Select your dietary and dining hall preferences below, so Mynu can automatically filter for you.</h5>
-        <Stack
-          direction="row"
-          justifyContent="center"
-          alignItems="flex-start"
-          spacing={2}>
+        <div class="d-flex-column col-12 p-3">
           <Stack
-            direction="column"
+            direction="row"
             justifyContent="center"
             alignItems="flex-start"
             spacing={2}>
-            <List>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("vegetarian")} onChange={e => this.onChangePreference(e.target.checked, "vegetarian")} />} label="Vegetarian" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("eggs")} onChange={e => this.onChangePreference(e.target.checked, "eggs")} />} label="Egg Free" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("vegan")} onChange={e => this.onChangePreference(e.target.checked, "vegan")} />} label="Vegan" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("gluten")} onChange={e => this.onChangePreference(e.target.checked, "gluten")} />} label="Gluten Free" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("tree nuts")} onChange={e => this.onChangePreference(e.target.checked, "tree nuts")} />} label="Tree Nut Free" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("wheat")} onChange={e => this.onChangePreference(e.target.checked, "wheat")} />} label="Wheat Free" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("dairy")} onChange={e => this.onChangePreference(e.target.checked, "dairy")} />} label="Dairy Free" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("fish")} onChange={e => this.onChangePreference(e.target.checked, "fish")} />} label="Fish Free" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("soy")} onChange={e => this.onChangePreference(e.target.checked, "soy")} />} label="Soy Free" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("crustacean")} onChange={e => this.onChangePreference(e.target.checked, "crustacean")} />} label="Crustacean Shellfish Free" /></ListItem>
-            </List>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="base-line"
+              spacing={2}>
+              <h4 class="text-center align-bottom font-weight-bold" ><u>Dietary Restrictions</u></h4>
+              <List>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("vegetarian")} onChange={e => this.onChangePreference(e.target.checked, "vegetarian")} />} label="Vegetarian" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("eggs")} onChange={e => this.onChangePreference(e.target.checked, "eggs")} />} label="Egg Free" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("vegan")} onChange={e => this.onChangePreference(e.target.checked, "vegan")} />} label="Vegan" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("gluten")} onChange={e => this.onChangePreference(e.target.checked, "gluten")} />} label="Gluten Free" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("tree nuts")} onChange={e => this.onChangePreference(e.target.checked, "tree nuts")} />} label="Tree Nut Free" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("wheat")} onChange={e => this.onChangePreference(e.target.checked, "wheat")} />} label="Wheat Free" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("dairy")} onChange={e => this.onChangePreference(e.target.checked, "dairy")} />} label="Dairy Free" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("fish")} onChange={e => this.onChangePreference(e.target.checked, "fish")} />} label="Fish Free" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("soy")} onChange={e => this.onChangePreference(e.target.checked, "soy")} />} label="Soy Free" /></ListItem>
+                <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("crustacean")} onChange={e => this.onChangePreference(e.target.checked, "crustacean")} />} label="Crustacean Shellfish Free" /></ListItem>
+              </List>
+            </Stack>
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="base-line"
+              spacing={2}>
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="base-line"
+                spacing={2}>
+                <h4 class="text-center align-bottom font-weight-bold" ><u>Dining Hall</u></h4>
+                <List>
+                  <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("BPlate")} onChange={e => this.onChangePreference(e.target.checked, "BPlate")} />} label="BPlate" /></ListItem>
+                  <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("Epicuria")} onChange={e => this.onChangePreference(e.target.checked, "Epicuria")} />} label="Epicuria" /></ListItem>
+                  <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("BCafe")} onChange={e => this.onChangePreference(e.target.checked, "BCafe")} />} label="BCafe" /></ListItem>
+                </List>
+              </Stack>
+
+              <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="base-line"
+                spacing={2}>
+                <h4 class="text-center align-bottom font-weight-bold" ><u>Meal Time</u></h4>
+                <List>
+                  <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("breakfast")} onChange={e => this.onChangePreference(e.target.checked, "breakfast")} />} label="breakfast" /></ListItem>
+                  <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("lunch")} onChange={e => this.onChangePreference(e.target.checked, "lunch")} />} label="lunch" /></ListItem>
+                  <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("dinner")} onChange={e => this.onChangePreference(e.target.checked, "dinner")} />} label="dinner" /></ListItem>
+                </List>
+              </Stack>
+            </Stack>
+
           </Stack>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="flex-start"
-            spacing={2}>
-            <List>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("BPlate")} onChange={e => this.onChangePreference(e.target.checked, "BPlate")} />} label="BPlate" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("Epicuria")} onChange={e => this.onChangePreference(e.target.checked, "Epicuria")} />} label="Epicuria" /></ListItem>
-              <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.preferences.includes("BCafe")} onChange={e => this.onChangePreference(e.target.checked, "BCafe")} />} label="BCafe" /></ListItem>
-            </List>
-          </Stack>
-        </Stack>
+        </div>
         <Button
           sx={{
             margin: 2
           }}
           variant="contained" onClick={this.onSubmit} component={Link} to="/menu">Save</Button>
         <Button
-          variant='contained' onClick={() => { this.setState({ preferences: [] }) }}> Reset </Button>
+          variant='contained' onClick={() => { this.setState({ preferences: ["BPlate", "Epicuria", "BCafe", "breakfast", "lunch", "dinner"] }) }}> Reset </Button>
       </div>
     );
   }

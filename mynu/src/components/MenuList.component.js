@@ -27,6 +27,9 @@ export default class MenuList extends Component {
             BPlate: true,
             Epicuria: true,
             BCafe: true,
+            breakfast: true,
+            lunch: true,
+            dinner: true,
         };
 
         // this.find_best_dining_hall = this.find_best_dining_hall.bind(this);
@@ -54,6 +57,9 @@ export default class MenuList extends Component {
             let _BPlate = false;
             let _Epicuria = false;
             let _BCafe = false;
+            let _breakfast = false;
+            let _lunch = false;
+            let _dinner = false;
 
 
             await axios.get(config.api_url + 'profiles/' + uid)
@@ -97,6 +103,15 @@ export default class MenuList extends Component {
                     if (response.data.preferences.includes('BCafe')) {
                         _BCafe = true;
                     }
+                    if (response.data.preferences.includes('breakfast')) {
+                        _breakfast = true;
+                    }
+                    if (response.data.preferences.includes('lunch')) {
+                        _lunch = true;
+                    }
+                    if (response.data.preferences.includes('dinner')) {
+                        _dinner = true;
+                    }
 
 
                     this.setState({
@@ -112,7 +127,10 @@ export default class MenuList extends Component {
                         crustaceanShellfishFree: _crustacean,
                         BPlate: _BPlate,
                         BCafe: _BCafe,
-                        Epicuria: _Epicuria
+                        Epicuria: _Epicuria,
+                        breakfast: _breakfast,
+                        lunch: _lunch,
+                        dinner: _dinner
                     })
 
                     console.log(this.state);
@@ -142,7 +160,10 @@ export default class MenuList extends Component {
                         (!this.state.crustaceanShellfishFree || !response.data[i].allergens.includes("crustacean shellfish")) &&
                         (this.state.BPlate || !response.data[i].dining_hall.includes("BPlate")) &&
                         (this.state.BCafe || !response.data[i].dining_hall.includes("BCafe")) &&
-                        (this.state.Epicuria || !response.data[i].dining_hall.includes("Epicuria"))
+                        (this.state.Epicuria || !response.data[i].dining_hall.includes("Epicuria")) &&
+                        (this.state.breakfast || !response.data[i].meal.includes("breakfast")) &&
+                        (this.state.lunch || !response.data[i].meal.includes("lunch")) &&
+                        (this.state.dinner || !response.data[i].meal.includes("dinner"))
                     ) {
                         items.push(response.data[i].name);
                         ids.push(response.data[i]._id);
@@ -246,6 +267,12 @@ export default class MenuList extends Component {
                                     <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.Epicuria} onChange={e => { this.setState({ Epicuria: e.target.checked }, this.handleFilter) }} />} label="Epicuria" /></ListItem>
                                     <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.BCafe} onChange={e => { this.setState({ BCafe: e.target.checked }, this.handleFilter) }} />} label="BCafe" /></ListItem>
                                 </List>
+                                <h4 class="text-center align-bottom font-weight-bold" ><u>Meal Time</u></h4>
+                                <List>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.breakfast} onChange={e => { this.setState({ breakfast: e.target.checked }, this.handleFilter) }} />} label="breakfast" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.lunch} onChange={e => { this.setState({ lunch: e.target.checked }, this.handleFilter) }} />} label="lunch" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.dinner} onChange={e => { this.setState({ dinner: e.target.checked }, this.handleFilter) }} />} label="dinner" /></ListItem>
+                                </List>
                             </Stack>
                         </Stack>
                         <Button variant='contained' onClick={() => {
@@ -262,7 +289,11 @@ export default class MenuList extends Component {
                                 crustaceanShellfishFree: false,
                                 BPlate: true,
                                 Epicuria: true,
-                                BCafe: true
+                                BCafe: true,
+                                breakfast: true,
+                                lunch: true,
+                                dinner: true,
+                                
                             },
                                 this.handleFilter)
                         }}> Reset </Button>
