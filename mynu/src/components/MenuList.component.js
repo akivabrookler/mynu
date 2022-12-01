@@ -146,17 +146,22 @@ export default class MenuList extends Component {
 
     async best_diningHall () {
         console.log("Entered best dining hall func")
-        let diningHalls = {BPlate: "BPlate", Epicuria: "Epicuria",BCafe: "BCafe"};
+        let diningHalls = {
+            "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length, 
+            "Epicuria": this.state.dining_halls.filter(item => item == "Epicuria").length, 
+            "BCafe": this.state.dining_halls.filter(item => item == "BCafe").length};
 
-        let BPlate = this.state.dining_halls.filter(item => item == "BPlate").length;
-        let Epicuria = this.state.dining_halls.filter(item => item == "Epicuria").length;
-        let BCafe = this.state.dining_halls.filter(item => item == "BCafe").length;
+    
+        let BPlate = ["BPlate", this.state.dining_halls.filter(item => item == "BPlate").length];
+        let Epicuria = ["Epicuria", this.state.dining_halls.filter(item => item == "Epicuria").length];
+        let BCafe = ["BCafe", this.state.dining_halls.filter(item => item == "BCafe").length];
         
-        console.log("Bplate count")
-        let best = Math.max(BPlate, Epicuria, BCafe);
+        let best = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b });
 
-        console.log([diningHalls[best],best]);
-        return [diningHalls[best],best]
+        console.log("BEST")
+        console.log([best, diningHalls[best]])
+   
+        return [best, diningHalls[best]]
 
     }
 
@@ -217,10 +222,6 @@ export default class MenuList extends Component {
                             this.handleFilter)
                         }}> Reset </Button>
                     </div>
-                </div>
-                <div>
-                    <h5>hello</h5>
-                    <h5>{this.state.best_dining_hall}</h5>
                 </div>
             </div>
         );
