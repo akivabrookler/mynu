@@ -2,7 +2,7 @@ import { FormControlLabel, Button, Checkbox, TextField, ListItem, ListItemButton
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import {Stack} from '@mui/material';
+import { Stack } from '@mui/material';
 
 const config = require('../config.json')
 
@@ -51,6 +51,9 @@ export default class MenuList extends Component {
             let _fish = false;
             let _soy = false;
             let _crustacean = false;
+            let _BPlate = false;
+            let _Epicuria = false;
+            let _BCafe = false;
 
 
             await axios.get(config.api_url + 'profiles/' + uid)
@@ -85,6 +88,16 @@ export default class MenuList extends Component {
                     if (response.data.preferences.includes('fish')) {
                         _fish = true;
                     }
+                    if (response.data.preferences.includes('BPlate')) {
+                        _BPlate = true;
+                    }
+                    if (response.data.preferences.includes('Epicuria')) {
+                        _Epicuria = true;
+                    }
+                    if (response.data.preferences.includes('BCafe')) {
+                        _BCafe = true;
+                    }
+
 
                     this.setState({
                         vegetarian: _vegetarian,
@@ -97,6 +110,9 @@ export default class MenuList extends Component {
                         fishFree: _fish,
                         soyFree: _soy,
                         crustaceanShellfishFree: _crustacean,
+                        BPlate: _BPlate,
+                        BCafe: _BCafe,
+                        Epicuria: _Epicuria
                     })
 
                     console.log(this.state);
@@ -129,7 +145,7 @@ export default class MenuList extends Component {
                         (this.state.Epicuria || !response.data[i].dining_hall.includes("Epicuria"))
                     ) {
                         items.push(response.data[i].name);
-                        ids.push(response.data[i]._id); 
+                        ids.push(response.data[i]._id);
                         dining_hall.push(response.data[i].dining_hall)
                     }
                 }
@@ -139,25 +155,26 @@ export default class MenuList extends Component {
             .catch((error) => {
                 console.log(error);
             });
-        
-        
-        this.setState({ items: items, ids: ids, dining_halls: dining_hall});
+
+
+        this.setState({ items: items, ids: ids, dining_halls: dining_hall });
         let best = this.find_best_dining_hall();
         console.log(this.state);
     }
 
-    async find_best_dining_hall () {
+    async find_best_dining_hall() {
         console.log("Entered best dining hall func")
         let diningHalls = {
-            "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length, 
-            "Epicuria": this.state.dining_halls.filter(item => item == "Epicuria").length, 
-            "BCafe": this.state.dining_halls.filter(item => item == "BCafe").length};
-        
-        let best = Object.keys(diningHalls).reduce(function(a, b){ return diningHalls[a] > diningHalls[b] ? a : b });
+            "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length,
+            "Epicuria": this.state.dining_halls.filter(item => item == "Epicuria").length,
+            "BCafe": this.state.dining_halls.filter(item => item == "BCafe").length
+        };
+
+        let best = Object.keys(diningHalls).reduce(function (a, b) { return diningHalls[a] > diningHalls[b] ? a : b });
 
         console.log("BEST")
         console.log([best, diningHalls[best]])
-        this.setState({best_dining_hall: best, total_item_count: diningHalls[best]});
+        this.setState({ best_dining_hall: best, total_item_count: diningHalls[best] });
         console.log(this.state);
         // return [best, diningHalls[best]];
 
@@ -171,7 +188,7 @@ export default class MenuList extends Component {
             itemList.push(<ListItemButton key={index} class="list-group-item" onClick={() => { console.log("Clicked") }} component={Link} to={"/menu/" + ids[index]}>{item}</ListItemButton>)
         })
 
-        
+
 
         return (
             <div class="container text-center">
@@ -184,27 +201,27 @@ export default class MenuList extends Component {
                 </div>
                 <div class="d-flex flex-row">
                     <div class="d-flex-column col-6">
-                    <div>
-                        <Typography variant='h6' fontWeight={'bold'}>
-                            Best Dining Hall: {this.state.best_dining_hall}
-                        </Typography>
-                    </div>
+                        <div>
+                            <Typography variant='h6' fontWeight={'bold'}>
+                                Best Dining Hall: {this.state.best_dining_hall}
+                            </Typography>
+                        </div>
                         <List class="list-group">
                             {itemList}
                         </List>
                     </div>
                     <div class="d-flex-column col-6 p-3">
                         <Stack
-                        direction="row"
-                        justifyContent="center"
-                        alignItems="flex-start"
-                        spacing={2}>
-                            <Stack
-                            direction="column"
+                            direction="row"
                             justifyContent="center"
                             alignItems="flex-start"
                             spacing={2}>
-                            <h4 class = "text-center align-bottom font-weight-bold" ><u>Dietary Restrictions</u></h4>
+                            <Stack
+                                direction="column"
+                                justifyContent="center"
+                                alignItems="flex-start"
+                                spacing={2}>
+                                <h4 class="text-center align-bottom font-weight-bold" ><u>Dietary Restrictions</u></h4>
                                 <List>
                                     <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegetarian} onChange={e => { this.setState({ vegetarian: e.target.checked }, this.handleFilter) }} />} label="Vegetarian" /></ListItem>
                                     <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.eggFree} onChange={e => { this.setState({ eggFree: e.target.checked }, this.handleFilter) }} />} label="Egg Free" /></ListItem>
@@ -219,11 +236,11 @@ export default class MenuList extends Component {
                                 </List>
                             </Stack>
                             <Stack
-                            direction="column"
-                            justifyContent="center"
-                            alignItems="flex-start"
-                            spacing={2}>
-                            <h4 class = "text-center align-bottom font-weight-bold" ><u>Dining Hall</u></h4>
+                                direction="column"
+                                justifyContent="center"
+                                alignItems="flex-start"
+                                spacing={2}>
+                                <h4 class="text-center align-bottom font-weight-bold" ><u>Dining Hall</u></h4>
                                 <List>
                                     <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.BPlate} onChange={e => { this.setState({ BPlate: e.target.checked }, this.handleFilter) }} />} label="BPlate" /></ListItem>
                                     <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.Epicuria} onChange={e => { this.setState({ Epicuria: e.target.checked }, this.handleFilter) }} />} label="Epicuria" /></ListItem>
@@ -239,7 +256,7 @@ export default class MenuList extends Component {
                                 glutenFree: false,
                                 treeNutFree: false,
                                 wheatFree: false,
-                                dairyFree: false,   
+                                dairyFree: false,
                                 fishFree: false,
                                 soyFree: false,
                                 crustaceanShellfishFree: false,
@@ -247,7 +264,7 @@ export default class MenuList extends Component {
                                 Epicuria: true,
                                 BCafe: true
                             },
-                            this.handleFilter)
+                                this.handleFilter)
                         }}> Reset </Button>
                     </div>
                 </div>

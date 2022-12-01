@@ -48,7 +48,7 @@ export default function Login() {
                 <h3>Sign in with Google</h3>
             </div>
             <div class='d-flex justify-content-center'>
-                <h6> Login to save preferences and rate menu items!</h6>
+                <h6> Login to save preferences and like/dislike items!</h6>
             </div>
             <div class='d-flex justify-content-center'>
                 <GoogleLogin
