@@ -103,7 +103,8 @@ export default class MenuList extends Component {
                 })
         }
         console.log('before');
-        this.handleFilter();
+        await this.handleFilter();
+        this.find_best_dining_hall();
         console.log('componentDidMount', this.state);
     }
 
