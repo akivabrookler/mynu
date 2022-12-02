@@ -45,10 +45,10 @@ export default function Login() {
     return (
         <div>
             <div class='d-flex justify-content-center'>
-                <h3>Sign in with Google</h3>
+                <h1>Sign in with Google</h1>
             </div>
             <div class='d-flex justify-content-center'>
-                <h6> Login to save preferences and like/dislike items!</h6>
+                <h4> Login to save preferences and like/dislike items!</h4>
             </div>
             <div class='d-flex justify-content-center'>
                 <GoogleLogin

@@ -97,7 +97,7 @@ export default class Profile extends Component {
     return (
       <div class="container text-center">
         <h1>Welcome {this.state.username}!</h1>
-        <h5>Select your dietary and dining hall preferences below, so Mynu can automatically filter for you.</h5>
+        <h5>Select your dietary and dining preferences below, so Mynu can automatically filter for you.</h5>
         <div class="d-flex-column col-12 p-3">
           <Stack
             direction="row"

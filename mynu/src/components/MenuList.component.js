@@ -35,7 +35,7 @@ export default class MenuList extends Component {
             dinner: true,
         };
 
-        this.find_best_dining_hall = this.find_best_dining_hall.bind(this);
+        // this.find_best_dining_hall = this.find_best_dining_hall.bind(this);
         this.handleChange = this.handleChange.bind(this);
 
     }
@@ -142,7 +142,7 @@ export default class MenuList extends Component {
         }
         console.log('before');
         await this.handleFilter();
-        this.find_best_dining_hall();
+        // this.find_best_dining_hall();
         console.log('componentDidMount', this.state);
     }
 
@@ -188,34 +188,34 @@ export default class MenuList extends Component {
 
 
         this.setState({ items: items, ids: ids, dining_halls: dining_hall });
-        console.log('inside handleFilter', this.state.best_dining_hall);
+        // console.log('inside handleFilter', this.state.best_dining_hall);
     }
 
     handleChange() {
         this.handleFilter();
-        this.find_best_dining_hall();
+        // this.find_best_dining_hall();
     }
 
-    find_best_dining_hall () {
-        console.log("Entered best dining hall func");
-        let diningHalls = {
-            "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length,
-            "Epicuria": this.state.dining_halls.filter(item => item == "Epicuria").length,
-            "BCafe": this.state.dining_halls.filter(item => item == "BCafe").length
-        };
+    // find_best_dining_hall () {
+    //     console.log("Entered best dining hall func");
+    //     let diningHalls = {
+    //         "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length,
+    //         "Epicuria": this.state.dining_halls.filter(item => item == "Epicuria").length,
+    //         "BCafe": this.state.dining_halls.filter(item => item == "BCafe").length
+    //     };
 
-        let best = Object.keys(diningHalls).reduce(function (a, b) { return diningHalls[a] > diningHalls[b] ? a : b });
+    //     let best = Object.keys(diningHalls).reduce(function (a, b) { return diningHalls[a] > diningHalls[b] ? a : b });
 
-        console.log("BEST");
-        console.log([best, diningHalls[best]]);
-        this.setState({best_dining_hall: best, total_item_count: diningHalls[best]});
-        console.log(best);
-        console.log(diningHalls[best]);
-        console.log(this.state);
-        console.log('inside find_best...', this.state.best_dining_hall, this.state.total_item_count);
-        return [best, diningHalls[best]];
+    //     console.log("BEST");
+    //     console.log([best, diningHalls[best]]);
+    //     this.setState({best_dining_hall: best, total_item_count: diningHalls[best]});
+    //     console.log(best);
+    //     console.log(diningHalls[best]);
+    //     console.log(this.state);
+    //     console.log('inside find_best...', this.state.best_dining_hall, this.state.total_item_count);
+    //     return [best, diningHalls[best]];
 
-    }
+    // }
 
     render() {
         let items = this.state.items;
@@ -240,7 +240,8 @@ export default class MenuList extends Component {
                     <div class="d-flex-column col-6">
                         <div>
                             <Typography variant='h6' fontWeight={'bold'}>
-                                Best Dining Hall: {this.state.best_dining_hall}
+                                {/* Best Dining Hall: {this.state.best_dining_hall} */}
+                                <u>{itemList.length} matches</u>
                             </Typography>
                         </div>
                         <List class="list-group">
