@@ -67,7 +67,7 @@ export default class MenuList extends Component {
 
 
             await axios.get(config.api_url + 'profiles/' + uid)
-                .then(response => {
+                .then(async response => {
                     if (response.data.preferences.includes('vegan')) {
                         _vegan = true;
                     }
@@ -118,7 +118,7 @@ export default class MenuList extends Component {
                     }
 
 
-                    this.setState({
+                    await this.setState({
                         vegetarian: _vegetarian,
                         eggFree: _egg,
                         vegan: _vegan,
@@ -140,6 +140,7 @@ export default class MenuList extends Component {
                     //console.log(this.state);
                 })
         }
+
         console.log('before');
         await this.handleFilter();
         this.find_best_dining_hall();
@@ -187,8 +188,11 @@ export default class MenuList extends Component {
             });
 
 
-        this.setState({ items: items, ids: ids, dining_halls: dining_hall });
-        console.log('inside handleFilter', this.state.best_dining_hall);
+        await this.setState({ items: items, ids: ids, dining_halls: dining_hall });
+        console.log('inside handleFilter. items (local): ', items);
+        console.log('inside handleFilter. this.state.items: ', this.state.items);
+        console.log('inside handleFilter. dining_hall (the local array): ', dining_hall);
+        console.log('inside handleFilter. this.state.dining_halls: ', this.state.dining_halls);
     }
 
     handleChange() {
@@ -196,7 +200,7 @@ export default class MenuList extends Component {
         this.find_best_dining_hall();
     }
 
-    find_best_dining_hall () {
+    async find_best_dining_hall () {
         console.log("Entered best dining hall func");
         let diningHalls = {
             "BPlate": this.state.dining_halls.filter(item => item == "BPlate").length,
@@ -208,7 +212,7 @@ export default class MenuList extends Component {
 
         console.log("BEST");
         console.log([best, diningHalls[best]]);
-        this.setState({best_dining_hall: best, total_item_count: diningHalls[best]});
+        await this.setState({best_dining_hall: best, total_item_count: diningHalls[best]});
         console.log(best);
         console.log(diningHalls[best]);
         console.log(this.state);
@@ -260,16 +264,16 @@ export default class MenuList extends Component {
                                 spacing={2}>
                                 <h4 class="text-center align-bottom font-weight-bold" ><u>Dietary Restrictions</u></h4>
                                 <List>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegetarian} onChange={e => { this.setState({ vegetarian: e.target.checked }, this.handleChange) }} />} label="Vegetarian" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.eggFree} onChange={e => { this.setState({ eggFree: e.target.checked }, this.handleChange) }} />} label="Egg Free" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegan} onChange={e => { this.setState({ vegan: e.target.checked }, this.handleChange) }} />} label="Vegan" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.glutenFree} onChange={e => { this.setState({ glutenFree: e.target.checked }, this.handleChange) }} />} label="Gluten Free" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.treeNutFree} onChange={e => { this.setState({ treeNutFree: e.target.checked }, this.handleChange) }} />} label="Tree Nut Free" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.wheatFree} onChange={e => { this.setState({ wheatFree: e.target.checked }, this.handleChange) }} />} label="Wheat Free" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.dairyFree} onChange={e => { this.setState({ dairyFree: e.target.checked }, this.handleChange) }} />} label="Dairy Free" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.fishFree} onChange={e => { this.setState({ fishFree: e.target.checked }, this.handleChange) }} />} label="Fish Free" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.soyFree} onChange={e => { this.setState({ soyFree: e.target.checked }, this.handleChange) }} />} label="Soy Free" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.crustaceanShellfishFree} onChange={e => { this.setState({ crustaceanShellfishFree: e.target.checked }, this.handleChange) }} />} label="Crustacean Shellfish Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegetarian} onChange={async e => { await this.setState({ vegetarian: e.target.checked }, this.handleChange) }} />} label="Vegetarian" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.eggFree} onChange={async e => { await this.setState({ eggFree: e.target.checked }, this.handleChange) }} />} label="Egg Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.vegan} onChange={async e => { await this.setState({ vegan: e.target.checked }, this.handleChange) }} />} label="Vegan" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.glutenFree} onChange={async e => { await this.setState({ glutenFree: e.target.checked }, this.handleChange) }} />} label="Gluten Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.treeNutFree} onChange={async e => { await this.setState({ treeNutFree: e.target.checked }, this.handleChange) }} />} label="Tree Nut Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.wheatFree} onChange={async e => { await this.setState({ wheatFree: e.target.checked }, this.handleChange) }} />} label="Wheat Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.dairyFree} onChange={async e => { await this.setState({ dairyFree: e.target.checked }, this.handleChange) }} />} label="Dairy Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.fishFree} onChange={async e => { await this.setState({ fishFree: e.target.checked }, this.handleChange) }} />} label="Fish Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.soyFree} onChange={async e => { await this.setState({ soyFree: e.target.checked }, this.handleChange) }} />} label="Soy Free" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.crustaceanShellfishFree} onChange={async e => { await this.setState({ crustaceanShellfishFree: e.target.checked }, this.handleChange) }} />} label="Crustacean Shellfish Free" /></ListItem>
                                 </List>
                             </Stack>
                             <Stack
@@ -279,20 +283,20 @@ export default class MenuList extends Component {
                                 spacing={2}>
                                 <h4 class="text-center align-bottom font-weight-bold" ><u>Dining Hall</u></h4>
                                 <List>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.BPlate} onChange={e => { this.setState({ BPlate: e.target.checked }, this.handleChange) }} />} label="BPlate" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.Epicuria} onChange={e => { this.setState({ Epicuria: e.target.checked }, this.handleChange) }} />} label="Epicuria" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.BCafe} onChange={e => { this.setState({ BCafe: e.target.checked }, this.handleChange) }} />} label="BCafe" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.BPlate} onChange={async e => { await this.setState({ BPlate: e.target.checked }, this.handleChange) }} />} label="BPlate" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.Epicuria} onChange={async e => { await this.setState({ Epicuria: e.target.checked }, this.handleChange) }} />} label="Epicuria" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.BCafe} onChange={async e => { await this.setState({ BCafe: e.target.checked }, this.handleChange) }} />} label="BCafe" /></ListItem>
                                 </List>
                                 <h4 class="text-center align-bottom font-weight-bold" ><u>Meal Time</u></h4>
                                 <List>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.breakfast} onChange={e => { this.setState({ breakfast: e.target.checked }, this.handleChange) }} />} label="breakfast" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.lunch} onChange={e => { this.setState({ lunch: e.target.checked }, this.handleChange) }} />} label="lunch" /></ListItem>
-                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.dinner} onChange={e => { this.setState({ dinner: e.target.checked }, this.handleChange) }} />} label="dinner" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.breakfast} onChange={async e => { await this.setState({ breakfast: e.target.checked }, this.handleChange) }} />} label="breakfast" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.lunch} onChange={async e => { await this.setState({ lunch: e.target.checked }, this.handleChange) }} />} label="lunch" /></ListItem>
+                                    <ListItem ><FormControlLabel control={<Checkbox size="Medium" checked={this.state.dinner} onChange={async e => { await this.setState({ dinner: e.target.checked }, this.handleChange) }} />} label="dinner" /></ListItem>
                                 </List>
                             </Stack>
                         </Stack>
-                        <Button variant='contained' onClick={() => {
-                            this.setState({
+                        <Button variant='contained' onClick={async () => {
+                            await this.setState({
                                 vegetarian: false,
                                 eggFree: false,
                                 vegan: false,
